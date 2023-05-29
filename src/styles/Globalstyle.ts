@@ -16,7 +16,6 @@ html {
 
 body {
   margin: 0;
-  padding-left: 0.5rem;
 }
 
 h1,
