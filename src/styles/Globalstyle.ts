@@ -11,10 +11,12 @@ html {
   font-family: ${(prop) => prop.theme.fonts.primary};
   font-weight: 400;
   background-color: ${(prop) => prop.theme.colors.light} ;
+  text-transform: uppercase;
 }
 
 body {
   margin: 0;
+  padding-left: 0.5rem;
 }
 
 h1,
