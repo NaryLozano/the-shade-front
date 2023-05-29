@@ -1,14 +1,20 @@
 import { NavLink } from "react-router-dom";
 import NavigationStyled from "./NavigationStyled";
 
-const NavigationBar = (): React.ReactElement => {
+const Navigation = (): React.ReactElement => {
   return (
     <NavigationStyled>
-      <NavLink to={"/"}>Add</NavLink>
-      <NavLink to={"/"}>Home</NavLink>
-      <NavLink to={"/"}>Logout</NavLink>
+      <NavLink to={"/"} aria-label="to Add page">
+        Add
+      </NavLink>
+      <NavLink to={"/"} aria-label="to Home page">
+        Home
+      </NavLink>
+      <NavLink to={"/"} aria-label="logout of app">
+        Logout
+      </NavLink>
     </NavigationStyled>
   );
 };
 
-export default NavigationBar;
+export default Navigation;
