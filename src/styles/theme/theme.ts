@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
   },
 
   fonts: {
-    primary: "Roboto Mono, sans-serif",
+    primary: "Roboto Mono, monospace",
   },
 
   fontSizes: {

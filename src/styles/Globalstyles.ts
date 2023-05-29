@@ -22,6 +22,7 @@ h2,
 h3,
 p {
   margin: 0;
+  font-family: inherit;
 }
 
 button {
