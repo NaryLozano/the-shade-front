@@ -1,10 +1,10 @@
-import Navigation from "../Navigation/Navigation";
+import Header from "../Header/Header";
 import ContainertStyled from "../shared/ContainerStyled";
 
 const Layout = (): React.ReactElement => {
   return (
     <ContainertStyled>
-      <Navigation></Navigation>
+      <Header></Header>
     </ContainertStyled>
   );
 };
