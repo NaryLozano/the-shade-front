@@ -18,6 +18,10 @@ body {
   margin: 0;
 }
 
+main{
+  padding: 20px;
+}
+
 h1,
 h2,
 h3,

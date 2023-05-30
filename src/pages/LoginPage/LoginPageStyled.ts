@@ -6,7 +6,6 @@ const LoginPageStyled = styled.main`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  width: 300px;
 `;
 
 export default LoginPageStyled;

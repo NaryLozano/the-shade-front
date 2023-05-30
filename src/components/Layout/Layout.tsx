@@ -4,9 +4,10 @@ import Header from "../Header/Header";
 
 const Layout = (): React.ReactElement => {
   const location = useLocation();
+
   return (
     <ContainertStyled>
-      <header>{!(location.pathname === "/login") && <Header />}</header>
+      {location.pathname !== "/login" && <Header />}
       <Outlet />
     </ContainertStyled>
   );
