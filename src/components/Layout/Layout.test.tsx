@@ -6,7 +6,7 @@ import { render, screen } from "@testing-library/react";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
-    test("Then is should show a header with a logotype of 'The Shade of it All'", () => {
+    test("Then it should show a header with a logotype of 'The Shade of it All'", () => {
       const expectedAltText =
         "The Shade of it all with drawing of Sasha Velour";
       const routes = [
