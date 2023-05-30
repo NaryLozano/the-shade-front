@@ -22,6 +22,11 @@ const LoginStyled = styled.form`
     height: 3.125rem;
     border-radius: 0.625rem;
     background-color: ${(prop) => prop.theme.colors.primary};
+    box-shadow: 0 0.25rem 0.25rem #00000040;
+    text-transform: uppercase;
+  }
+  .login-form__button:disabled {
+    background-color: ${(prop) => prop.theme.colors.dissabled};
   }
 `;
 export default LoginStyled;

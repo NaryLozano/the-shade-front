@@ -35,6 +35,7 @@ button {
   border: none;
   font: inherit;
   cursor: pointer;
+  box-shadow: 0 0.25rem 0.25rem #00000040;
 }
 
 input {

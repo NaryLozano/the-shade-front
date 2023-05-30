@@ -9,6 +9,7 @@ const theme: DefaultTheme = {
     backgroundCard: "#f5f5f5",
     okModal: "#b24195",
     primary: "#ff5ed566",
+    dissabled: "#80808029",
   },
 
   fonts: {
