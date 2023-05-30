@@ -9,7 +9,7 @@ const Header = (): React.ReactElement => {
         src="./media/Logotype.svg"
         alt="The Shade of it all with drawing of Sasha Velour"
       />
-      <Navigation></Navigation>
+      <Navigation />
     </HeaderStyled>
   );
 };
