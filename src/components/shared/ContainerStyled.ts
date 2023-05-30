@@ -4,8 +4,8 @@ const ContainertStyled = styled.div`
   flex-direction: column;
   gap: 25px;
   margin: 0 auto;
-  align-items: center;
-  min-width: 320px;
+  min-width: 20rem;
+  min-height: 100vh;
 `;
 
 export default ContainertStyled;
