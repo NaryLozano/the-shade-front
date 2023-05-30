@@ -12,7 +12,9 @@ const LoginStyled = styled.form`
     text-transform: uppercase;
     width: 17.5rem;
     height: 3.125rem;
+    border: none;
     border-bottom: 1px solid #000;
+    outline: none;
   }
 
   .login-form__button {
