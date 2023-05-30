@@ -1,15 +1,25 @@
 import { useState } from "react";
 import LoginStyled from "./LoginStyled";
+import { UserCredentials } from "../../store/user/types";
 
-const Login = (): React.ReactElement => {
+interface LoginProps {
+  loginSubmit: (user: UserCredentials) => void;
+}
+const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
 
   const onChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({ ...loginData, [event.target.id]: event.target.value });
   };
 
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    loginSubmit(loginData);
+    setLoginData({ username: "", password: "" });
+  };
+
   return (
-    <LoginStyled className="login-form">
+    <LoginStyled className="login-form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="login-form__user"
