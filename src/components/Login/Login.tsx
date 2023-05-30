@@ -15,6 +15,7 @@ const Login = (): React.ReactElement => {
         autoComplete="off"
         placeholder="Username"
         onChange={onChangeLogin}
+        aria-label="username"
       />
       <input
         type="password"
@@ -23,7 +24,9 @@ const Login = (): React.ReactElement => {
         autoComplete="off"
         placeholder="Password"
         onChange={onChangeLogin}
+        aria-label="password"
       />
+
       <button className="login-form__button">login</button>
     </LoginStyled>
   );
