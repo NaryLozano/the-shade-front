@@ -3,9 +3,11 @@ import LoginStyled from "./LoginStyled";
 
 const Login = (): React.ReactElement => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
+
   const onChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({ ...loginData, [event.target.id]: event.target.value });
   };
+
   return (
     <LoginStyled className="login-form">
       <input
