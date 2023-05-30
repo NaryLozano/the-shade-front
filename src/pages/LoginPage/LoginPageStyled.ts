@@ -6,6 +6,11 @@ const LoginPageStyled = styled.main`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+
+  .logotype {
+    width: 12.5rem;
+    height: 12.5rem;
+  }
 `;
 
 export default LoginPageStyled;
