@@ -10,6 +10,7 @@ declare module "styled-components" {
       okModal: string;
       backgroundCard: string;
       primary: string;
+      dissabled: string;
     };
 
     fonts: {
