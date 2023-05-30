@@ -5,7 +5,7 @@ const LoginPageStyled = styled.main`
   padding-top: 4rem;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
 
   .logotype {
     width: 12.5rem;

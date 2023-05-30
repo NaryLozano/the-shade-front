@@ -8,6 +8,7 @@ const HeaderStyled = styled.header`
 
   .logotype {
     width: 4.375rem;
+    margin: 0 auto;
   }
 `;
 
