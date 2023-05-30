@@ -9,6 +9,7 @@ const LoginPage = (): React.ReactElement => {
         src="./media/Logotype.svg"
         alt="The Shade of it all with drawing of Sasha Velour"
         aria-label="Logotype of The Shade of it All"
+        loading="lazy"
       />
       <Login />
     </LoginPageStyled>

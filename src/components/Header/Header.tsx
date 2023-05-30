@@ -8,6 +8,7 @@ const Header = (): React.ReactElement => {
         className="logotype"
         src="./media/Logotype.svg"
         alt="The Shade of it all with drawing of Sasha Velour"
+        loading="lazy"
       />
       <Navigation />
     </HeaderStyled>

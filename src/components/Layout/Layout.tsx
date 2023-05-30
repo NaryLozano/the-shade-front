@@ -1,13 +1,18 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { Suspense } from "react";
 import ContainertStyled from "../shared/ContainerStyled";
-import Header from "../Header/Header";
+import { LazyHeader } from "../../routers/lazyComponents/lazyComponents";
 
 const Layout = (): React.ReactElement => {
   const location = useLocation();
 
   return (
     <ContainertStyled>
-      {location.pathname !== "/login" && <Header />}
+      {location.pathname !== "/login" && (
+        <Suspense>
+          <LazyHeader />
+        </Suspense>
+      )}
       <Outlet />
     </ContainertStyled>
   );
