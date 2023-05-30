@@ -8,7 +8,7 @@ const theme: DefaultTheme = {
     error: "#ff4040",
     backgroundCard: "#f5f5f5",
     okModal: "#b24195",
-    primary: "#ff5ed5",
+    primary: "#ff5ed566",
   },
 
   fonts: {
