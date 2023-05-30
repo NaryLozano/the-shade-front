@@ -1,6 +1,11 @@
+import { useState } from "react";
 import LoginStyled from "./LoginStyled";
 
 const Login = (): React.ReactElement => {
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const onChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginData({ ...loginData, [event.target.id]: event.target.value });
+  };
   return (
     <LoginStyled className="login-form">
       <input
@@ -9,6 +14,7 @@ const Login = (): React.ReactElement => {
         id="username"
         autoComplete="off"
         placeholder="Username"
+        onChange={onChangeLogin}
       />
       <input
         type="password"
@@ -16,6 +22,7 @@ const Login = (): React.ReactElement => {
         id="password"
         autoComplete="off"
         placeholder="Password"
+        onChange={onChangeLogin}
       />
       <button className="login-form__button">login</button>
     </LoginStyled>
