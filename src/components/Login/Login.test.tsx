@@ -4,9 +4,11 @@ import { expect, test, vi } from "vitest";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
 import Login from "./Login";
 import { userMockCredentials } from "../../mocks/mocks";
+import { getMockUserCredentials } from "../../mocks/factory/userFactory/userFactory";
+import { UserCredentials } from "../../store/user/types";
 
 const expectedAriaLabelText = "username";
-const expectedPlaceHolderText = "Password";
+const expectedPlaceHolderText = "password";
 
 describe("Given a Login component", () => {
   describe("When its rendered", () => {
@@ -37,7 +39,7 @@ describe("Given a Login component", () => {
         name: expectedAriaLabelText,
       });
       const input = screen.getByPlaceholderText(expectedPlaceHolderText);
-      const loginButton = screen.getByRole("button", { name: "buttonLogin" });
+      const loginButton = screen.getByRole("button", { name: "login" });
 
       await userEvent.type(inputArea, mockUserCredentials.username);
       await userEvent.type(input, mockUserCredentials.password);
@@ -56,11 +58,12 @@ describe("Given an onChange function", () => {
       const inputArea = screen.getByRole("textbox", {
         name: expectedAriaLabelText,
       });
-      const username = "Marcsias";
 
-      await userEvent.type(inputArea, username);
+      const user: UserCredentials = getMockUserCredentials();
 
-      expect(inputArea).toHaveValue(username);
+      await userEvent.type(inputArea, user.username);
+
+      expect(inputArea).toHaveValue(user.username);
     });
   });
 });

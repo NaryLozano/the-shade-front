@@ -6,7 +6,7 @@ import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
 describe("Given a Navigation component", () => {
   describe("When its rendered", () => {
     test("Then it should show a navigation link with  'ADD'", () => {
-      const expectedTextLinkAdd = "to Add page";
+      const expectedTextLinkAdd = "Add";
 
       renderWithProviders(wrapWithRouter(<Navigation />));
 
@@ -16,7 +16,7 @@ describe("Given a Navigation component", () => {
     });
 
     test("Then it should show a navigation link with 'HOME'", () => {
-      const expectedTextLinkHome = "to Home page";
+      const expectedTextLinkHome = "Home";
 
       renderWithProviders(wrapWithRouter(<Navigation />));
 
@@ -26,7 +26,7 @@ describe("Given a Navigation component", () => {
     });
 
     test("Then it should show a navigation Link with 'LOGOUT'", () => {
-      const expectedTextLinkLogout = "logout of app";
+      const expectedTextLinkLogout = "Logout";
 
       renderWithProviders(wrapWithRouter(<Navigation />));
 
