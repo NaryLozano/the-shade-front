@@ -30,7 +30,7 @@ describe("Given a Navigation component", () => {
 
       renderWithProviders(wrapWithRouter(<Navigation />));
 
-      const linkLogout = screen.getByRole("link", {
+      const linkLogout = screen.getByRole("button", {
         name: expectedTextLinkLogout,
       });
 

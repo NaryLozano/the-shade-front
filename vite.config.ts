@@ -17,10 +17,12 @@ export default defineConfig({
       src: ["src"],
       exclude: [
         "**/types.ts",
+        "**/**.test.ts",
         "**/*.d.ts ",
         "src/routers",
         "src/styles/GlobalStyle.ts",
         "src/main.tsx",
+        "src/mocks/factories/**/*.ts",
       ],
     },
   },
