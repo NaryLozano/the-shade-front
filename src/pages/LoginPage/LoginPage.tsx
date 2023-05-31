@@ -11,11 +11,7 @@ const LoginPage = (): React.ReactElement => {
         aria-label="Logotype of The Shade of it All"
         loading="lazy"
       />
-      <Login
-        loginSubmit={(): void => {
-          throw new Error("Function not implemented.");
-        }}
-      />
+      <Login loginSubmit={() => ({})} />
     </LoginPageStyled>
   );
 };

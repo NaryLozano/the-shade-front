@@ -47,6 +47,7 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
       <button
         className="login-form__button"
         disabled={isValidInput ? false : true}
+        aria-label="buttonLogin"
       >
         login
       </button>
