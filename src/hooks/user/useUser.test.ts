@@ -1,8 +1,8 @@
 import { expect, test } from "vitest";
-import { tokenMock } from "../mocks/mocks";
+import { tokenMock } from "../../mocks/mocks";
 import { renderHook } from "@testing-library/react";
 import useUser from "./useUser";
-import { userMockCredentials } from "../mocks/mocks";
+import { userMockCredentials } from "../../mocks/mocks";
 
 describe("Given a getUserToken", () => {
   describe("when its called with valid User credentials", () => {
