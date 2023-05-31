@@ -3,10 +3,10 @@ import { UserTokenStructure } from "../../store/user/types";
 
 const useToken = () => {
   const getTokenData = (token: string): UserTokenStructure => {
-    const decodedToken: { sub: string; name: string } = jwt_decode(token);
+    const decodedToken: { sub: string; user: string } = jwt_decode(token);
     const userLoggedData = {
       id: decodedToken.sub,
-      username: decodedToken.name,
+      username: decodedToken.user,
       token,
     };
     return userLoggedData;
