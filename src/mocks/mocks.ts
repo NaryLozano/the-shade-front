@@ -1,19 +1,15 @@
-import {
-  UserCredentials,
-  UserStateStructure,
-  UserTokenStructure,
-} from "../store/user/types";
+import { UserCredentials, UserStateStructure } from "../store/user/types";
 
 export const tokenMock = "meowToken";
 
-export const userMock: UserTokenStructure = {
+export const userMock: UserStateStructure = {
   id: "1",
   username: "Marcs",
   token: "thisisatoken",
   isLogged: true,
 };
 
-export const InitialUserStateMock: UserTokenStructure = {
+export const InitialUserStateMock: UserStateStructure = {
   id: "",
   token: "",
   username: "",

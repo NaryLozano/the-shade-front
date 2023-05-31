@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UserCredentials } from "../store/user/types";
+import { UserCredentials } from "../../store/user/types";
 
 export const apiUrl = import.meta.env.VITE_APP_URL;
 const useUser = () => {
