@@ -1,8 +1,9 @@
 import { rest } from "msw";
 import { tokenMock } from "./mocks";
+import { apiUrl } from "../hooks/useUser";
 
 export const handlers = [
-  rest.post(`/login`, (_req, res, ctx) => {
+  rest.post(`${apiUrl}/login`, (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ token: tokenMock }));
   }),
 ];
