@@ -4,6 +4,7 @@ import {
   UserTokenStructure,
 } from "../store/user/types";
 
+export const tokenMock = "meowToken";
 export const userMock: UserTokenStructure = {
   id: "1",
   username: "Marcs",
