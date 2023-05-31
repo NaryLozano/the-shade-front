@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { RouterProvider } from "react-router-dom";
 import appRouter from "./routers/appRouter";
-import GlobalStyle from "./styles/Globalstyle";
+import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme/theme";
 

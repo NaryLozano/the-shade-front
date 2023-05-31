@@ -6,7 +6,9 @@ const Navigation = (): React.ReactElement => {
     <NavigationStyled>
       <NavLink to={"/"}>Add</NavLink>
       <NavLink to={"/"}>Home</NavLink>
-      <NavLink to={"/"}>Logout</NavLink>
+      <button onClick={() => ({})} className="logout">
+        Logout
+      </button>
     </NavigationStyled>
   );
 };

@@ -19,7 +19,7 @@ export default defineConfig({
         "**/types.ts",
         "**/*.d.ts ",
         "src/routers",
-        "src/styles/Globalstyle.ts",
+        "src/styles/GlobalStyle.ts",
         "src/main.tsx",
       ],
     },
