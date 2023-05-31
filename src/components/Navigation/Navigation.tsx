@@ -4,15 +4,9 @@ import NavigationStyled from "./NavigationStyled";
 const Navigation = (): React.ReactElement => {
   return (
     <NavigationStyled>
-      <NavLink to={"/"} aria-label="to Add page">
-        Add
-      </NavLink>
-      <NavLink to={"/"} aria-label="to Home page">
-        Home
-      </NavLink>
-      <NavLink to={"/"} aria-label="logout of app">
-        Logout
-      </NavLink>
+      <NavLink to={"/"}>Add</NavLink>
+      <NavLink to={"/"}>Home</NavLink>
+      <NavLink to={"/"}>Logout</NavLink>
     </NavigationStyled>
   );
 };

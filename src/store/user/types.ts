@@ -5,7 +5,7 @@ export interface UserTokenStructure {
 }
 
 export interface UserStateStructure extends UserTokenStructure {
-  isLogged: boolean;
+  isLogged?: boolean;
 }
 
 export interface UserCredentials {

@@ -24,13 +24,16 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
     loginData.username.length > 4 && loginData.password.length > 3;
 
   return (
-    <LoginStyled className="login-form" onSubmit={handleSubmit}>
+    <LoginStyled
+      className="login-form"
+      onSubmit={handleSubmit}
+      autoComplete="off"
+    >
       <input
         type="text"
         className="login-form__user"
         id="username"
-        autoComplete="off"
-        placeholder="Username"
+        placeholder="username"
         onChange={onChangeLogin}
         aria-label="username"
       />
@@ -38,16 +41,14 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
         type="password"
         className="login-form__password"
         id="password"
-        autoComplete="off"
-        placeholder="Password"
+        placeholder="password"
         onChange={onChangeLogin}
-        aria-label="password"
       />
 
       <button
+        type="submit"
         className="login-form__button"
         disabled={isValidInput ? false : true}
-        aria-label="buttonLogin"
       >
         login
       </button>
