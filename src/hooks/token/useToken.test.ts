@@ -1,14 +1,14 @@
 import { renderHook } from "@testing-library/react";
 import { expect, test } from "vitest";
 import useToken from "./useToken";
-import { tokenMock, userMockTokenData } from "../../mocks/mocks";
-import { UserTokenStructure } from "../../store/user/types";
+import { tokenMock, userMockDecoded } from "../../mocks/mocks";
+import { UserDecoded } from "../../store/user/types";
 
 describe("Given a getTokenData function", () => {
   describe("When it receives a token", () => {
-    test("Then it should return the user's data decoded and  the token", () => {
+    test("Then it should return the user's data decoded ", () => {
       const token = tokenMock;
-      const expectedUserWithToken: UserTokenStructure = userMockTokenData;
+      const expectedUser: UserDecoded = userMockDecoded;
       const {
         result: {
           current: { getTokenData },
@@ -17,7 +17,7 @@ describe("Given a getTokenData function", () => {
 
       const userData = getTokenData(token);
 
-      expect(userData).toStrictEqual(expectedUserWithToken);
+      expect(userData).toStrictEqual(expectedUser);
     });
   });
 });
