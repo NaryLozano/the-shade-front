@@ -13,9 +13,9 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
     setLoginData({ ...loginData, [event.target.id]: event.target.value });
   };
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    loginSubmit(loginData);
+    await loginSubmit(loginData);
 
     setLoginData(emptyCredentials);
   };
@@ -36,6 +36,7 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
         placeholder="username"
         onChange={onChangeLogin}
         aria-label="username"
+        value={loginData.username}
       />
       <input
         type="password"
@@ -43,6 +44,7 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
         id="password"
         placeholder="password"
         onChange={onChangeLogin}
+        value={loginData.password}
       />
 
       <button
