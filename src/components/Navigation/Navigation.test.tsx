@@ -2,6 +2,13 @@ import { screen } from "@testing-library/react";
 import Navigation from "./Navigation";
 import { test } from "vitest";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
+import paths from "../../routers/paths/paths";
+import {
+  RouteObject,
+  RouterProvider,
+  createMemoryRouter,
+} from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a Navigation component", () => {
   describe("When its rendered", () => {
@@ -35,6 +42,25 @@ describe("Given a Navigation component", () => {
       });
 
       expect(linkLogout).toBeInTheDocument();
+    });
+  });
+});
+
+describe("Given a handlingLogout function ", () => {
+  describe("When its called by an user click", () => {
+    test("Then it should navigate to the login page", async () => {
+      const routes: RouteObject[] = [
+        { path: paths.root, element: <Navigation /> },
+      ];
+      const routerLogin = createMemoryRouter(routes);
+
+      renderWithProviders(<RouterProvider router={routerLogin} />);
+
+      const logoutButton = screen.getByRole("button", { name: "Logout" });
+
+      await userEvent.click(logoutButton);
+
+      expect(routerLogin.state.location.pathname).toBe(paths.root);
     });
   });
 });

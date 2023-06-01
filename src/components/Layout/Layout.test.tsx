@@ -2,7 +2,8 @@ import { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme/theme";
 import Layout from "./Layout";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../utils/testUtils";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
@@ -21,8 +22,7 @@ describe("Given a Layout component", () => {
       ];
 
       const headerRouter = createMemoryRouter(routes);
-
-      render(<RouterProvider router={headerRouter} />);
+      renderWithProviders(<RouterProvider router={headerRouter} />);
 
       const header = screen.getByRole("img", { name: expectedAltText });
 
