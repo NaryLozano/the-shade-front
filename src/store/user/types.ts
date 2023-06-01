@@ -1,9 +1,12 @@
 export interface UserTokenStructure {
   username: string;
   id: string;
-  token: string;
+  token?: string;
 }
-
+export interface UserDecoded {
+  username: string;
+  id: string;
+}
 export interface UserStateStructure extends UserTokenStructure {
   isLogged?: boolean;
 }
