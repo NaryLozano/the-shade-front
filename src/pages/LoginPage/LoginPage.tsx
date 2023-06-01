@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Login from "../../components/Login/Login";
 import useToken from "../../hooks/token/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
@@ -11,6 +12,7 @@ const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
   const { getTokenData } = useToken();
   const { setItemLocalStorage } = useLocalStorage();
+  const Navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (user: UserCredentials) => {
@@ -19,6 +21,7 @@ const LoginPage = (): React.ReactElement => {
     const userData = getTokenData(token);
 
     dispatch(loginUserActionCreator(userData));
+    Navigate("/home", { replace: true });
   };
 
   return (
