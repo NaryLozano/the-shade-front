@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
 import App from "../components/App/App";
 import LoginPage from "../pages/LoginPage/LoginPage";
-const routes: RouteObject[] = [
+export const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,

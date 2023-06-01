@@ -31,7 +31,7 @@ describe("Given a Login component", () => {
     });
   });
   describe("When its receives an user submit event with valid inputs", () => {
-    test("Then it should have call th HandleSubmit function", async () => {
+    test("Then it should have call the HandleSubmit function", async () => {
       const mockOnSubmit = vi.fn();
       renderWithProviders(wrapWithRouter(<Login loginSubmit={mockOnSubmit} />));
       const mockUserCredentials = userMockCredentials;
