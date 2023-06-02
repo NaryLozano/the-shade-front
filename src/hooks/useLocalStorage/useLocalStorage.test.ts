@@ -13,7 +13,7 @@ describe("Given a setItemLocalStorage function", () => {
       const { setItemLocalStorage } = useLocalStorage();
       setItemLocalStorage(key, tokenMock);
 
-      expect(localStorage.getItem("token")).toBe(expectedToken);
+      expect(localStorage.getItem(key)).toBe(expectedToken);
     });
   });
 });
@@ -23,7 +23,7 @@ describe("Given a getItemLocalStorage function", () => {
     test("Then it should return the token saved in local storage", () => {
       const { getItemLocalStorage, setItemLocalStorage } = useLocalStorage();
       setItemLocalStorage(key, tokenMock);
-      const token = getItemLocalStorage("token");
+      const token = getItemLocalStorage(key);
 
       expect(token).toBe(expectedToken);
     });
