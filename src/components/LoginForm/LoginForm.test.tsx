@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { expect, test, vi } from "vitest";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
-import Login from "./Login";
+import LoginForm from "./LoginForm";
 import { userMockCredentials } from "../../mocks/mocks";
 import { getMockUserCredentials } from "../../mocks/factory/userFactory/userFactory";
 import { UserCredentials } from "../../store/user/types";
@@ -10,10 +10,12 @@ import { UserCredentials } from "../../store/user/types";
 const expectedAriaLabelText = "username";
 const expectedPlaceHolderText = "password";
 
-describe("Given a Login component", () => {
+describe("Given a LoginForm component", () => {
   describe("When its rendered", () => {
     test("Then it should show an input field with and accesible name'username'", () => {
-      renderWithProviders(wrapWithRouter(<Login loginSubmit={() => ({})} />));
+      renderWithProviders(
+        wrapWithRouter(<LoginForm loginSubmit={() => ({})} />)
+      );
 
       const input = screen.getByRole("textbox", {
         name: expectedAriaLabelText,
@@ -23,7 +25,9 @@ describe("Given a Login component", () => {
     });
 
     test("Then it should show an input field with the place holder 'Password'", () => {
-      renderWithProviders(wrapWithRouter(<Login loginSubmit={() => ({})} />));
+      renderWithProviders(
+        wrapWithRouter(<LoginForm loginSubmit={() => ({})} />)
+      );
 
       const input = screen.getByPlaceholderText(expectedPlaceHolderText);
 
@@ -33,7 +37,9 @@ describe("Given a Login component", () => {
   describe("When its receives an user submit event with valid inputs", () => {
     test("Then it should have call the HandleSubmit function", async () => {
       const mockOnSubmit = vi.fn();
-      renderWithProviders(wrapWithRouter(<Login loginSubmit={mockOnSubmit} />));
+      renderWithProviders(
+        wrapWithRouter(<LoginForm loginSubmit={mockOnSubmit} />)
+      );
       const mockUserCredentials = userMockCredentials;
       const inputArea = screen.getByRole("textbox", {
         name: expectedAriaLabelText,
@@ -53,7 +59,9 @@ describe("Given a Login component", () => {
 describe("Given an onChange function", () => {
   describe("When it receives user input", () => {
     test("Then it should show the user input", async () => {
-      renderWithProviders(wrapWithRouter(<Login loginSubmit={() => ({})} />));
+      renderWithProviders(
+        wrapWithRouter(<LoginForm loginSubmit={() => ({})} />)
+      );
 
       const inputArea = screen.getByRole("textbox", {
         name: expectedAriaLabelText,

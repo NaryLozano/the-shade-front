@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Login from "../../components/Login/Login";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import useToken from "../../hooks/token/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import useUser from "../../hooks/user/useUser";
@@ -33,7 +33,7 @@ const LoginPage = (): React.ReactElement => {
         alt="The Shade of it all with drawing of Sasha Velour"
         aria-label="Logotype of The Shade of it All"
       />
-      <Login loginSubmit={onSubmit} />
+      <LoginForm loginSubmit={onSubmit} />
     </LoginPageStyled>
   );
 };

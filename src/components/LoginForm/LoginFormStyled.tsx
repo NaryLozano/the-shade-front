@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoginStyled = styled.form`
+const LoginFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   width: 18.75rem;
@@ -29,4 +29,4 @@ const LoginStyled = styled.form`
     background-color: ${(prop) => prop.theme.colors.dissabled};
   }
 `;
-export default LoginStyled;
+export default LoginFormStyled;

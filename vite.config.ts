@@ -24,6 +24,7 @@ export default defineConfig({
         "src/styles/GlobalStyle.ts",
         "src/main.tsx",
         "src/mocks/factories/**/*.ts",
+        "src/components/App/",
       ],
     },
   },

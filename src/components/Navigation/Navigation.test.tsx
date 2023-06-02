@@ -44,7 +44,7 @@ describe("Given a Navigation component", () => {
   });
 
   describe("When its rendered and receives a click on logout ", () => {
-    test("Then it shouldnt show the logout button", async () => {
+    test("Then it shouldn't show the logout button", async () => {
       const userData: UserStateStructure = userMock;
       renderWithProviders(wrapWithRouter(<Layout />), { user: userData });
 
