@@ -2,13 +2,11 @@ import { screen } from "@testing-library/react";
 import Navigation from "./Navigation";
 import { test } from "vitest";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
-import paths from "../../routers/paths/paths";
-import {
-  RouteObject,
-  RouterProvider,
-  createMemoryRouter,
-} from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+
+import { userMock } from "../../mocks/mocks";
+import { UserStateStructure } from "../../store/user/types";
+import Layout from "../Layout/Layout";
 
 describe("Given a Navigation component", () => {
   describe("When its rendered", () => {
@@ -34,8 +32,8 @@ describe("Given a Navigation component", () => {
 
     test("Then it should show a navigation Link with 'LOGOUT'", () => {
       const expectedTextLinkLogout = "Logout";
-
-      renderWithProviders(wrapWithRouter(<Navigation />));
+      const userData: UserStateStructure = userMock;
+      renderWithProviders(wrapWithRouter(<Navigation />), { user: userData });
 
       const linkLogout = screen.getByRole("button", {
         name: expectedTextLinkLogout,
@@ -44,23 +42,17 @@ describe("Given a Navigation component", () => {
       expect(linkLogout).toBeInTheDocument();
     });
   });
-});
 
-describe("Given a handlingLogout function ", () => {
-  describe("When its called by an user click", () => {
-    test("Then it should navigate to the login page", async () => {
-      const routes: RouteObject[] = [
-        { path: paths.root, element: <Navigation /> },
-      ];
-      const routerLogin = createMemoryRouter(routes);
-
-      renderWithProviders(<RouterProvider router={routerLogin} />);
+  describe("When its rendered and receives a click on logout ", () => {
+    test("Then it shouldnt show the logout button", async () => {
+      const userData: UserStateStructure = userMock;
+      renderWithProviders(wrapWithRouter(<Layout />), { user: userData });
 
       const logoutButton = screen.getByRole("button", { name: "Logout" });
 
       await userEvent.click(logoutButton);
 
-      expect(routerLogin.state.location.pathname).toBe(paths.root);
+      expect(logoutButton).not.toBeInTheDocument();
     });
   });
 });
