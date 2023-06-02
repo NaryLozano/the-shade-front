@@ -32,7 +32,7 @@ describe("Given an userReducer", () => {
 
       const emptystate = userReducer(
         currentUserState,
-        logoutUserActionCreator(InitialUserStateMock)
+        logoutUserActionCreator()
       );
 
       expect(emptystate).toStrictEqual(expectedEmptyUserState);

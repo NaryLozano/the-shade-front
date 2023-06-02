@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../store";
 import { UserCredentials } from "../../store/user/types";
 import { loginUserActionCreator } from "../../store/user/userSlice";
 import LoginPageStyled from "./LoginPageStyled";
+import paths from "../../routers/paths/paths";
 
 const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
@@ -19,9 +20,9 @@ const LoginPage = (): React.ReactElement => {
     const token = await getUserToken(user);
     setItemLocalStorage("token", token);
     const userData = getTokenData(token);
-
     dispatch(loginUserActionCreator(userData));
     Navigate("/home", { replace: true });
+    Navigate(paths.home, { replace: true });
   };
 
   return (
