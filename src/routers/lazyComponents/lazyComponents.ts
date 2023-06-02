@@ -1,3 +1,3 @@
 import { lazy } from "react";
 
-export const LazyHeader = lazy(() => import("../../components/Header/Header"));
+export const LazyList = lazy(() => import("../../pages/ListPage/ListPage"));
