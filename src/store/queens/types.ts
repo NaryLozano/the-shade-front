@@ -1,4 +1,5 @@
 export interface QueenStructure {
+  id?: string;
   name: string;
   age: number;
   rank: number;

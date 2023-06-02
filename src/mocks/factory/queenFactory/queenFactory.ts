@@ -10,6 +10,7 @@ const queenFactory = Factory.define<QueenStructure>(() => ({
   rank: faker.number.int({ min: 0, max: 16 }),
   season: faker.number.int({ min: 0, max: 16 }),
   memorableQuote: faker.person.bio(),
+  id: faker.database.mongodbObjectId(),
 }));
 
 export const getQueenMockData = (data?: QueenStructure) => {
