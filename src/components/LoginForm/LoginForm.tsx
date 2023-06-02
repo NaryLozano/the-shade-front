@@ -1,12 +1,12 @@
 import { useState } from "react";
-import LoginStyled from "./LoginStyled";
+import LoginFormStyled from "./LoginFormStyled";
 import { UserCredentials } from "../../store/user/types";
 
 interface LoginProps {
   loginSubmit: (user: UserCredentials) => void;
 }
 const emptyCredentials = { username: "", password: "" };
-const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
+const LoginForm = ({ loginSubmit }: LoginProps): React.ReactElement => {
   const [loginData, setLoginData] = useState(emptyCredentials);
 
   const onChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
     loginData.username.length > 4 && loginData.password.length > 3;
 
   return (
-    <LoginStyled
+    <LoginFormStyled
       className="login-form"
       onSubmit={handleSubmit}
       autoComplete="off"
@@ -54,8 +54,8 @@ const Login = ({ loginSubmit }: LoginProps): React.ReactElement => {
       >
         login
       </button>
-    </LoginStyled>
+    </LoginFormStyled>
   );
 };
 
-export default Login;
+export default LoginForm;
