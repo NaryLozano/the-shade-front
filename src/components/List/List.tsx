@@ -1,4 +1,5 @@
 import { QueenStructure } from "../../store/queens/types";
+import Card from "../Card/Card";
 import ListStyled from "./ListStyled";
 
 interface ListProps {
@@ -9,7 +10,7 @@ const List = ({ queens }: ListProps): React.ReactElement => {
     <ListStyled>
       {queens.map((queen) => (
         <li className="queen" key={queen.id}>
-          <h2>{queen.name}</h2>
+          <Card queen={queen} />
         </li>
       ))}
     </ListStyled>
