@@ -13,7 +13,7 @@ const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
   const { getTokenData } = useToken();
   const { setItemLocalStorage } = useLocalStorage();
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (user: UserCredentials) => {
@@ -21,8 +21,8 @@ const LoginPage = (): React.ReactElement => {
     setItemLocalStorage("token", token);
     const userData = getTokenData(token);
     dispatch(loginUserActionCreator(userData));
-    Navigate("/home", { replace: true });
-    Navigate(paths.home, { replace: true });
+
+    navigate(paths.home, { replace: true });
   };
 
   return (
