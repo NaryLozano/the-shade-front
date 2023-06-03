@@ -20,7 +20,7 @@ const LoginPage = (): React.ReactElement => {
     const token = await getUserToken(user);
     setItemLocalStorage("token", token);
     const userData = getTokenData(token);
-    dispatch(loginUserActionCreator(userData));
+    dispatch(loginUserActionCreator({ ...userData, token: token }));
 
     navigate(paths.home, { replace: true });
   };

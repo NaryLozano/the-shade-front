@@ -3,6 +3,7 @@ import { queensMock } from "../../mocks/queensMocks";
 import useApi from "./useApi";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { wrapper } from "../../utils/testUtils";
 
 describe("Given a getQueens function", () => {
   describe("When its called", () => {
@@ -13,7 +14,7 @@ describe("Given a getQueens function", () => {
         result: {
           current: { getQueens },
         },
-      } = renderHook(() => useApi());
+      } = renderHook(() => useApi(), { wrapper: wrapper });
 
       const queensList = await getQueens();
 
@@ -27,7 +28,7 @@ describe("Given a getQueens function", () => {
         result: {
           current: { getQueens },
         },
-      } = renderHook(() => useApi());
+      } = renderHook(() => useApi(), { wrapper: wrapper });
 
       const errorGetQueens = async () => await getQueens();
 
