@@ -17,7 +17,7 @@ describe("Given a Card component", () => {
     test("Then it should show the Name of the Drag Queen", () => {
       const queen = queenMock2;
       renderWithProviders(wrapWithRouter(<Card queen={queen} />));
-      screen.debug();
+
       const nameDrag = screen.getByRole("heading", {
         level: 2,
         name: queen.name,
