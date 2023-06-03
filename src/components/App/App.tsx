@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/user/userSlice";
 import Layout from "../Layout/Layout";
 
-const App = (): JSX.Element => {
+const App = (): React.ReactElement => {
   const { getItemLocalStorage } = useLocalStorage();
   const { getTokenData } = useToken();
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ const App = (): JSX.Element => {
     if (token) {
       const userData = getTokenData(token);
 
-      dispatch(loginUserActionCreator(userData));
+      dispatch(loginUserActionCreator({ ...userData, token: token }));
     }
   }, [dispatch, getItemLocalStorage, getTokenData]);
   return <Layout />;
