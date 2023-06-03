@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 const useLocalStorage = () => {
   const setItemLocalStorage = (key: string, value: string) => {
     localStorage.setItem(key, value);
@@ -7,9 +9,10 @@ const useLocalStorage = () => {
     localStorage.removeItem(key);
   };
 
-  const getItemLocalStorage = (key: string) => {
+  const getItemLocalStorage = useCallback((key: string) => {
     return localStorage.getItem(key);
-  };
+  }, []);
+
   return { setItemLocalStorage, deleteItemLocalStorage, getItemLocalStorage };
 };
 

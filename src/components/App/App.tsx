@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useToken from "../../hooks/token/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { useAppDispatch } from "../../store";
@@ -9,13 +10,15 @@ const App = (): JSX.Element => {
   const { getTokenData } = useToken();
   const dispatch = useAppDispatch();
 
-  const token = getItemLocalStorage("token");
+  useEffect(() => {
+    const token = getItemLocalStorage("token");
 
-  if (token) {
-    const userData = getTokenData(token);
+    if (token) {
+      const userData = getTokenData(token);
 
-    dispatch(loginUserActionCreator(userData));
-  }
+      dispatch(loginUserActionCreator(userData));
+    }
+  }, [dispatch, getItemLocalStorage, getTokenData]);
   return <Layout />;
 };
 
