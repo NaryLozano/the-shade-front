@@ -1,4 +1,4 @@
-import { UserDecoded, UserTokenStructure } from "../store/user/types";
+import { UserDecoded } from "../store/user/types";
 import { UserStateStructure } from "../store/user/types";
 import {
   getMockUserCredentials,
@@ -16,12 +16,12 @@ export const userMock: UserStateStructure = {
   isLogged: true,
 };
 
-export const userMockTokenData: UserTokenStructure = {
+export const userMockTokenData = getUserMockData(false, {
   id: "64777b96d3217b6b3b8b7142",
   username: "gina",
   token:
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDc3N2I5NmQzMjE3YjZiM2I4YjcxNDIiLCJ1c2VyIjoiZ2luYSIsImlhdCI6MTY4NTU1MjA4MSwiZXhwIjoxNjg1NjM4NDgxfQ.As-wLvPAPLeSyh6KwYSTWO5YTr8ekk7ytWj6_BnVm0E",
-};
+});
 
 export const userMockDecoded: UserDecoded = {
   id: "64777b96d3217b6b3b8b7142",
