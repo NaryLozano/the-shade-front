@@ -11,7 +11,7 @@ const useApi = () => {
 
       return queens;
     } catch {
-      const error = new Error("bad request to api");
+      const error = new Error("Can't get Queens");
       throw error;
     }
   }, []);
