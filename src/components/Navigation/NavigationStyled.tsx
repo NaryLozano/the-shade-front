@@ -12,5 +12,8 @@ const NavigationStyled = styled.nav`
     box-shadow: none;
     text-transform: uppercase;
   }
+  .active {
+    border-bottom: 0.063rem solid black;
+  }
 `;
 export default NavigationStyled;

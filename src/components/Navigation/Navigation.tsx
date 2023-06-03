@@ -21,7 +21,7 @@ const Navigation = (): React.ReactElement => {
 
   return (
     <NavigationStyled>
-      <NavLink to={"/"}>Add</NavLink>
+      <NavLink to={"/add"}>Add</NavLink>
       <NavLink to={"/home"}>Home</NavLink>
       {isLogged ? (
         <button onClick={handlingLogout} className="logout">
