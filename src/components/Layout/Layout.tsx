@@ -4,6 +4,8 @@ import Header from "../Header/Header";
 import paths from "../../routers/paths/paths";
 import Loading from "../Loading/Loading";
 import { useAppSelector } from "../../store";
+import Modal from "../Modal/Modal";
+import modalData from "../Modal/modalData";
 
 const Layout = (): React.ReactElement => {
   const location = useLocation();
@@ -14,6 +16,11 @@ const Layout = (): React.ReactElement => {
     <ContainertStyled>
       {location.pathname === paths.login || <Header />}
       {isLoading && <Loading />}
+      <Modal
+        text={modalData.messages.addOk}
+        modaltype={modalData.modaltype.OK}
+        className={modalData.className.OK}
+      />
       <Outlet />
     </ContainertStyled>
   );

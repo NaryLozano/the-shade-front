@@ -6,6 +6,13 @@ const ContainertStyled = styled.div`
   margin: 0 auto;
   min-width: 20rem;
   min-height: 100vh;
+  .modal-error {
+    background-color: red;
+  }
+
+  .modal-ok {
+    background-color: green;
+  }
 `;
 
 export default ContainertStyled;
