@@ -3,7 +3,7 @@ import { loadQueensActionCreator, queenReducer } from "./queensSlice";
 import { QueenStructure, QueensState } from "./types";
 
 describe("Given an userReducer", () => {
-  describe("When it recaives an empty initial state and a loadQueens action", () => {
+  describe("When it receives an empty initial state and a loadQueens action", () => {
     test("Then it should return the new state a list with 2 queens", () => {
       const initialQueensState: QueenStructure[] = [];
 
