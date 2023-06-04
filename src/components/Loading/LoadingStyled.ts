@@ -9,10 +9,11 @@ const LoadingStyled = styled.div`
   position: absolute;
   z-index: 1;
   background-color: #ffffffe0;
+
   .loader {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
   }
 
   .loader:before,
@@ -21,10 +22,10 @@ const LoadingStyled = styled.div`
     border-radius: 50%;
     position: absolute;
     inset: 0;
-    box-shadow: 0 0 10px 2px #ff5ed5 inset;
+    box-shadow: 0 0 0.625rem 0.125rem #ff5ed5 inset;
   }
   .loader:after {
-    box-shadow: 0 4px 0 #b24195e6 inset;
+    box-shadow: 0 0.25rem 0 #b24195e6 inset;
     animation: rotate 2s linear infinite;
   }
 

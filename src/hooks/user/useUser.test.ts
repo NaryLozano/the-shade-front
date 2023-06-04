@@ -4,6 +4,7 @@ import { renderHook } from "@testing-library/react";
 import useUser from "./useUser";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
+import { wrapper } from "../../utils/testUtils";
 
 describe("Given a getUserToken", () => {
   describe("when its called with valid User credentials", () => {
@@ -14,7 +15,7 @@ describe("Given a getUserToken", () => {
         result: {
           current: { getUserToken },
         },
-      } = renderHook(() => useUser());
+      } = renderHook(() => useUser(), { wrapper: wrapper });
 
       const token = await getUserToken(user);
 
@@ -30,7 +31,7 @@ describe("Given a getUserToken", () => {
         result: {
           current: { getUserToken },
         },
-      } = renderHook(() => useUser());
+      } = renderHook(() => useUser(), { wrapper: wrapper });
 
       const erroraxios = async () => await getUserToken(notUser);
 
