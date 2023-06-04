@@ -29,4 +29,29 @@ describe("Given a Layout component", () => {
       expect(header).toBeInTheDocument();
     });
   });
+
+  describe("When it's rendered  and is loading is true", () => {
+    test("Then it should show a loader spinner", () => {
+      const AccessibleName = "loader";
+      const routes = [
+        {
+          path: "/",
+          element: (
+            <ThemeProvider theme={theme}>
+              <Layout />
+            </ThemeProvider>
+          ),
+        },
+      ];
+
+      const headerRouter = createMemoryRouter(routes);
+      renderWithProviders(<RouterProvider router={headerRouter} />, {
+        ui: { isLoading: true },
+      });
+
+      const spinner = screen.getByRole("generic", { name: AccessibleName });
+
+      expect(spinner).toBeInTheDocument();
+    });
+  });
 });
