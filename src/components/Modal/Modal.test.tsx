@@ -17,7 +17,7 @@ describe("Given a Modal component", () => {
           />
         )
       );
-      screen.debug();
+
       const errorTitle = screen.getByRole("heading", {
         level: 1,
         name: "oops!",
