@@ -11,10 +11,12 @@ const Modal = ({
   className,
 }: ModalProps): React.ReactElement => {
   return (
-    <ModalStyled className={className}>
-      <h1>{modaltype}</h1>
-      <span>{text}</span>
-      <button>back</button>
+    <ModalStyled>
+      <article className={`modal ${className}`}>
+        <h1 className="modal-title">{modaltype}</h1>
+        <span>{text}</span>
+        <button>back</button>
+      </article>
     </ModalStyled>
   );
 };

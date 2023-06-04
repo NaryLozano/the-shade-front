@@ -27,7 +27,7 @@ const modalData: modalDataStructure = {
     addFail: "queen could't \n be created \n try again, please",
     logOut: "you have been \n correctly logged out",
     modifyOk: "a new queen has \n been modified!",
-    addOk: "you'r queen has \n  been added!",
+    addOk: "a new queen has \n  been added!",
     deleteOk: "you'r queen has \n been deleted!",
     deleteFail: "queen could't \n be deleted \n try again, please",
   },
