@@ -8,7 +8,7 @@ const LoadingStyled = styled.div`
   width: 100vw;
   position: absolute;
   z-index: 1;
-  background-color: #ffffffe0;
+  background-color: ${(props) => props.theme.colors.darkOpacity};
 
   .loader {
     position: relative;

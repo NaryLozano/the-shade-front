@@ -32,7 +32,7 @@ describe("Given a Layout component", () => {
 
   describe("When it's rendered  and is loading is true", () => {
     test("Then it should show a loader spinner", () => {
-      const AccessibleName = "loader";
+      const loaderId = "loader";
       const routes = [
         {
           path: "/",
@@ -49,9 +49,9 @@ describe("Given a Layout component", () => {
         ui: { isLoading: true },
       });
 
-      const spinner = screen.getByRole("generic", { name: AccessibleName });
+      const spinner = screen.getAllByTestId(loaderId);
 
-      expect(spinner).toBeInTheDocument();
+      expect(spinner).toBeTruthy();
     });
   });
 });

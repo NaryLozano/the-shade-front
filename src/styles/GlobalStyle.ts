@@ -21,7 +21,7 @@ body {
 }
 
 main{
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 h1,
@@ -36,7 +36,8 @@ button {
   border: none;
   font: inherit;
   cursor: pointer;
-  box-shadow: 0 0.25rem 0.25rem #00000040;
+  box-shadow: ${(props) => props.theme.colors.shadow};
+
 }
 
 input {

@@ -11,6 +11,12 @@ declare module "styled-components" {
       backgroundCard: string;
       primary: string;
       dissabled: string;
+      darkPrimary: string;
+      borderPicture: string;
+      shadow: string;
+      mediumLight: string;
+      darkOpacity: string;
+      darkSecondary: string;
     };
 
     fonts: {
@@ -18,7 +24,10 @@ declare module "styled-components" {
     };
 
     fontSizes: {
+      small: string;
+      normal: string;
       medium: string;
+      big: string;
     };
 
     spacing: {

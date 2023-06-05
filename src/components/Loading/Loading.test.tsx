@@ -6,10 +6,11 @@ describe("Given a Loading component", () => {
   describe("When it's rendered", () => {
     test("Then it should show a loader ", () => {
       renderWithProviders(wrapWithRouter(<Loading />));
+      const loaderId = "loader";
 
-      const loader = screen.getByRole("generic", { name: "loader" });
+      const loader = screen.getAllByTestId(loaderId);
 
-      expect(loader).toBeInTheDocument();
+      expect(loader).toBeTruthy();
     });
   });
 });

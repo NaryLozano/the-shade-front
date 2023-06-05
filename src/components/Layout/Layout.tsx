@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from "react-router-dom";
-import ContainertStyled from "../shared/ContainerStyled";
 import Header from "../Header/Header";
 import paths from "../../routers/paths/paths";
 import Loading from "../Loading/Loading";
 import { useAppSelector } from "../../store";
+import LayoutStyled from "./LayoutStyled";
 
 const Layout = (): React.ReactElement => {
   const location = useLocation();
@@ -11,11 +11,11 @@ const Layout = (): React.ReactElement => {
   const { isLoading } = useAppSelector((state) => state.ui);
 
   return (
-    <ContainertStyled>
+    <LayoutStyled>
       {location.pathname === paths.login || <Header />}
       {isLoading && <Loading />}
       <Outlet />
-    </ContainertStyled>
+    </LayoutStyled>
   );
 };
 

@@ -5,5 +5,9 @@ const ListStyled = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+
+  .queen {
+    position: relative;
+  }
 `;
 export default ListStyled;
