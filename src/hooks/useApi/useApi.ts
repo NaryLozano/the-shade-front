@@ -4,25 +4,33 @@ import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
   hideLoadingActionCreator,
+  showErrorActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
 
 const useApi = () => {
   const { token } = useAppSelector((state) => state.user);
+
   const dispatch = useAppDispatch();
 
   const getQueens = useCallback(async () => {
     try {
       dispatch(showLoadingActionCreator());
+
       const {
         data: { queens },
       } = await axios.get(`${apiUrl}/queens`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(hideLoadingActionCreator());
+
       return queens;
-    } catch {
-      const error = new Error("Can't get Queens");
+    } catch (error: unknown) {
+      dispatch(hideLoadingActionCreator());
+      if (error) {
+        dispatch(showErrorActionCreator({ isError: true }));
+      }
+
       throw error;
     }
   }, [dispatch, token]);
