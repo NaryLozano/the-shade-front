@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonCircleStyled = styled.button.attrs((props) => ({
+const ButtonStyled = styled.button.attrs((props) => ({
   className: props.className,
 }))`
   border-radius: 3.125rem;
@@ -14,4 +14,4 @@ const ButtonCircleStyled = styled.button.attrs((props) => ({
   align-items: center;
 `;
 
-export default ButtonCircleStyled;
+export default ButtonStyled;
