@@ -1,19 +1,15 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
-import ButtonCircle from "./ButtonCircle";
+import Button from "./Button";
 import modify from "../../media/Lipstick.svg";
 import Delete from "../../media/Delete.svg";
 
-describe("Given a ButtonCircle component", () => {
+describe("Given a Button component", () => {
   describe("When it's rendered with a modify name", () => {
     test("Then it should show a button with a lipstick", () => {
       renderWithProviders(
         wrapWithRouter(
-          <ButtonCircle
-            buttonName="modify"
-            buttonType={modify}
-            className="modify"
-          />
+          <Button buttonName="modify" buttonType={modify} className="modify" />
         )
       );
       const buttonModify = screen.getByRole("button", { name: "modify" });
@@ -25,11 +21,7 @@ describe("Given a ButtonCircle component", () => {
     test("Then it should show a button with a pink 'X'", () => {
       renderWithProviders(
         wrapWithRouter(
-          <ButtonCircle
-            buttonName="delete"
-            buttonType={Delete}
-            className="delete"
-          />
+          <Button buttonName="delete" buttonType={Delete} className="delete" />
         )
       );
       const buttonDelete = screen.getByRole("button", { name: "delete" });

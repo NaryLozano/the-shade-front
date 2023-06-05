@@ -1,8 +1,8 @@
 import { QueenStructure } from "../../store/queens/types";
-import ButtonCircle from "../ButtonCircle/ButtonCircle";
 import CardStyled from "./CardStyled";
 import Delete from "../../media/Delete.svg";
 import modify from "../../media/Lipstick.svg";
+import Button from "../Button/Button";
 
 interface CardProps {
   queen: QueenStructure;
@@ -17,16 +17,16 @@ const Card = ({ queen }: CardProps): React.ReactElement => {
         <li className="details"> {queen.rank}</li>
         <li className="details">{queen.hometown}</li>
       </ul>
-      <ButtonCircle
+      <Button
         buttonType={modify}
         buttonName="modify"
         className="modify"
-      ></ButtonCircle>
-      <ButtonCircle
+      ></Button>
+      <Button
         buttonType={Delete}
         buttonName="delete"
         className="delete"
-      ></ButtonCircle>
+      ></Button>
     </CardStyled>
   );
 };
