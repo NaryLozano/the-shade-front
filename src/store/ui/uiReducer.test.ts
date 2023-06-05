@@ -1,5 +1,6 @@
 import {
   UiStateStruture,
+  hideErrorActionCreator,
   hideLoadingActionCreator,
   showErrorActionCreator,
   showLoadingActionCreator,
@@ -34,12 +35,23 @@ describe("Given an uiReducer", () => {
     });
   });
 
-  describe("When it receives a ui state wit a isError false", () => {
+  describe("When it receives a ui state with a isError false", () => {
     test("Then it should return the new state of the Ui", () => {
       const initialUiState: UiStateStruture = { isError: false };
       const newUiState: UiStateStruture = { isError: true };
 
       const resultUiState = uiReducer(initialUiState, showErrorActionCreator());
+
+      expect(resultUiState).toStrictEqual(newUiState);
+    });
+  });
+
+  describe("When it receives a ui state with a isError to true", () => {
+    test("then it should return the new state of the Ui", () => {
+      const initialState: UiStateStruture = { isError: true };
+      const newUiState: UiStateStruture = { isError: false };
+
+      const resultUiState = uiReducer(initialState, hideErrorActionCreator());
 
       expect(resultUiState).toStrictEqual(newUiState);
     });
