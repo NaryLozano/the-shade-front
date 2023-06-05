@@ -3,30 +3,34 @@ import CardStyled from "./CardStyled";
 import Delete from "../../media/Delete.svg";
 import modify from "../../media/Lipstick.svg";
 import Button from "../Button/Button";
+import buttonData from "../Button/buttonData";
 
 interface CardProps {
   queen: QueenStructure;
 }
 const Card = ({ queen }: CardProps): React.ReactElement => {
   return (
-    <CardStyled>
-      <ul>
-        <img className="img-card" src={queen.image} alt={queen.name} />
-        <h2>{queen.name}</h2>
-        <li className="details">ranking:</li>
-        <li className="details"> {queen.rank}</li>
-        <li className="details">{queen.hometown}</li>
-      </ul>
-      <Button
-        buttonType={modify}
-        buttonName="modify"
-        className="modify"
-      ></Button>
-      <Button
-        buttonType={Delete}
-        buttonName="delete"
-        className="delete"
-      ></Button>
+    <CardStyled className="card">
+      <button className="card__image-button">
+        <img className="card__img" src={queen.image} alt={queen.name} />
+      </button>
+
+      <h2>{queen.name}</h2>
+      <span className="card__details">ranking:</span>
+      <span className="card__details"> {queen.rank}</span>
+      <span className="card__details">{queen.hometown}</span>
+      <div className="card__buttons">
+        <Button
+          buttonImage={(buttonData.buttonImage = modify)}
+          buttonA11Y={buttonData.buttonName.modify}
+          className={buttonData.className.modify}
+        ></Button>
+        <Button
+          buttonImage={(buttonData.buttonImage = Delete)}
+          buttonA11Y={buttonData.buttonName.delete}
+          className={buttonData.className.delete}
+        ></Button>
+      </div>
     </CardStyled>
   );
 };

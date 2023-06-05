@@ -2,39 +2,46 @@ import styled from "styled-components";
 
 const CardStyled = styled.article`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 17.5rem;
   height: 29.375rem;
-  background-color: #f5f5f5;
+  background-color: ${(props) => props.theme.colors.backgroundCard};
   border-radius: 0.813rem;
-  padding-top: 1.25rem;
-  box-shadow: 0 0.25rem 0.25rem #00000040;
-  position: relative;
+  padding: 1.25rem;
+  box-shadow: ${(props) => props.theme.colors.shadow};
 
   h2 {
     padding-top: 0.625rem;
   }
-  .img-card {
-    width: 15rem;
-    height: 12.5rem;
-    border-radius: 0.813rem;
-    box-shadow: 0px 0.25rem 0.25rem #00000040;
-    border: 0.125rem solid #ff5ed557;
-  }
+  .card {
+    &__image-button {
+      width: 15rem;
+      height: 12.5rem;
+      border-radius: 0.813rem;
+      box-shadow: none;
+      background-color: transparent;
+    }
 
-  .delete {
-    right: 1.25rem;
-    bottom: 1.25rem;
-  }
+    &__img {
+      width: 100%;
+      border-radius: 10px;
+      border: ${(props) => props.theme.colors.borderPicture};
+    }
 
-  .modify {
-    left: 1.25rem;
-    bottom: 1.25rem;
-  }
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.563rem 0;
+      position: absolute;
+      bottom: 0;
+      width: 15rem;
+    }
 
-  .details {
-    color: #000;
-    padding: 0.313rem;
+    &__details {
+      font-size: ${(props) => props.theme.fontSizes.small};
+      color: ${(props) => props.theme.colors.darkPrimary};
+      padding: 0.313rem;
+    }
   }
 `;
 
