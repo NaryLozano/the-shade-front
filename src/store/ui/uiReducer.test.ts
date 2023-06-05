@@ -1,6 +1,7 @@
 import {
   UiStateStruture,
   hideLoadingActionCreator,
+  showErrorActionCreator,
   showLoadingActionCreator,
   uiReducer,
 } from "./uiSlice";
@@ -18,6 +19,7 @@ describe("Given an uiReducer", () => {
       expect(resultUiState).toStrictEqual(newUiState);
     });
   });
+
   describe("When it receives a ui state with a isLoading true", () => {
     test("Then it should return the new state of the Ui", () => {
       const initialUiState: UiStateStruture = { isLoading: true };
@@ -27,6 +29,17 @@ describe("Given an uiReducer", () => {
         initialUiState,
         hideLoadingActionCreator()
       );
+
+      expect(resultUiState).toStrictEqual(newUiState);
+    });
+  });
+
+  describe("When it receives a ui state wit a isError false", () => {
+    test("Then it should return the new state of the Ui", () => {
+      const initialUiState: UiStateStruture = { isError: false };
+      const newUiState: UiStateStruture = { isError: true };
+
+      const resultUiState = uiReducer(initialUiState, showErrorActionCreator());
 
       expect(resultUiState).toStrictEqual(newUiState);
     });
