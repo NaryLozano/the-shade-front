@@ -13,7 +13,7 @@ const NavigationStyled = styled.nav`
     text-transform: uppercase;
   }
   .active {
-    border-bottom: 0.063rem solid black;
+    border-bottom: 0.063rem solid ${(props) => props.theme.colors.darkPrimary};
   }
 `;
 export default NavigationStyled;

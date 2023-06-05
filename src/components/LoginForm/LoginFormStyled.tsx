@@ -13,7 +13,7 @@ const LoginFormStyled = styled.form`
     width: 17.5rem;
     height: 3.125rem;
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 0.063rem solid #000;
     outline: none;
   }
 
@@ -22,7 +22,7 @@ const LoginFormStyled = styled.form`
     height: 3.125rem;
     border-radius: 0.625rem;
     background-color: ${(prop) => prop.theme.colors.primary};
-    box-shadow: 0 0.25rem 0.25rem #00000040;
+    box-shadow: ${(prop) => prop.theme.colors.shadow};
     text-transform: uppercase;
   }
   .login-form__button:disabled {
