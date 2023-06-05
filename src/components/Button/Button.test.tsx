@@ -9,7 +9,7 @@ describe("Given a Button component", () => {
     test("Then it should show a button with a lipstick", () => {
       renderWithProviders(
         wrapWithRouter(
-          <Button buttonName="modify" buttonType={modify} className="modify" />
+          <Button buttonA11Y="modify" buttonImage={modify} className="modify" />
         )
       );
       const buttonModify = screen.getByRole("button", { name: "modify" });
@@ -21,7 +21,7 @@ describe("Given a Button component", () => {
     test("Then it should show a button with a pink 'X'", () => {
       renderWithProviders(
         wrapWithRouter(
-          <Button buttonName="delete" buttonType={Delete} className="delete" />
+          <Button buttonA11Y="delete" buttonImage={Delete} className="delete" />
         )
       );
       const buttonDelete = screen.getByRole("button", { name: "delete" });
