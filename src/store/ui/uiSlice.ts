@@ -26,6 +26,11 @@ const uiSlice = createSlice({
       ...currentUiState,
       isError: true,
     }),
+
+    hideError: (currentuiState: UiStateStruture) => ({
+      ...currentuiState,
+      isError: false,
+    }),
   },
 });
 
@@ -33,6 +38,7 @@ export const {
   showLoading: showLoadingActionCreator,
   hideLoading: hideLoadingActionCreator,
   showError: showErrorActionCreator,
+  hideError: hideErrorActionCreator,
 } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;
