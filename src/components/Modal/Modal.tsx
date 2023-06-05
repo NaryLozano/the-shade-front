@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import ModalStyled from "./ModalStyled";
 
 interface ModalProps {
@@ -15,7 +16,7 @@ const Modal = ({
       <article className={`modal ${className}`}>
         <h1 className="modal-title">{modaltype}</h1>
         <span>{text}</span>
-        <button>back</button>
+        <Button buttonName="back" buttonType="" className="back"></Button>
       </article>
     </ModalStyled>
   );
