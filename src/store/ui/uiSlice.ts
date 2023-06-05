@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UiStateStruture {
   isLoading?: boolean;
@@ -22,9 +22,12 @@ const uiSlice = createSlice({
       isLoading: false,
     }),
 
-    showError: (currentUiState: UiStateStruture) => ({
+    showError: (
+      currentUiState: UiStateStruture,
+      action: PayloadAction<UiStateStruture>
+    ) => ({
       ...currentUiState,
-      isError: true,
+      isError: action.payload.isError,
     }),
 
     hideError: (currentuiState: UiStateStruture) => ({

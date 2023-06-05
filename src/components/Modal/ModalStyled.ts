@@ -12,6 +12,7 @@ const ModalStyled = styled.div.attrs((props) => ({
   background-color: #ffffffe0;
   flex-direction: column;
   color: #fff;
+  top: 0;
   position: absolute;
 
   .modal {

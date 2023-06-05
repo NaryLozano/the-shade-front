@@ -6,7 +6,6 @@ const ListPageStyled = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   h1 {
     margin-bottom: 2.188rem;
   }
