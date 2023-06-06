@@ -36,7 +36,7 @@ const useUser = () => {
           modalMessage: messages.invalid,
         })
       );
-      return messages.invalid;
+      throw messages.invalid;
     }
   };
   return { getUserToken };

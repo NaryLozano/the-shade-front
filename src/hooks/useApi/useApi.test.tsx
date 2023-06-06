@@ -21,6 +21,7 @@ describe("Given a getQueens function", () => {
       expect(queensList).toStrictEqual(expectedQueens);
     });
   });
+
   describe("When its called and rejects", () => {
     test("Then it should dispatch a showModalActionCreator", async () => {
       server.resetHandlers(...errorHandlers);

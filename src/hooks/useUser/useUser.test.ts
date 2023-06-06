@@ -5,6 +5,9 @@ import useUser from "./useUser";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
 import { wrapper } from "../../utils/testUtils";
+import modalData from "../../data/modalData";
+
+const { invalid } = modalData.messages;
 
 describe("Given a getUserToken", () => {
   describe("when its called with valid User credentials", () => {
@@ -33,9 +36,9 @@ describe("Given a getUserToken", () => {
         },
       } = renderHook(() => useUser(), { wrapper: wrapper });
 
-      const erroraxios = async () => await getUserToken(notUser);
+      const invalidUser = async () => await getUserToken(notUser);
 
-      expect(erroraxios).rejects.toThrowError();
+      expect(invalidUser).rejects.toThrowError(invalid);
     });
   });
 });
