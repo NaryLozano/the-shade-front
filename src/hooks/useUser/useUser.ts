@@ -30,6 +30,7 @@ const useUser = () => {
 
       return token;
     } catch {
+      dispatch(hideLoadingActionCreator());
       dispatch(
         showModalActionCreator({
           isSuccess: false,
