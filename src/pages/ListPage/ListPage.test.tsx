@@ -34,7 +34,7 @@ describe("Given a ListPage page", () => {
       const routerList = createMemoryRouter(routes);
 
       renderWithProviders(<RouterProvider router={routerList} />, {
-        ui: { isError: true },
+        ui: { isSuccess: true },
       });
 
       const modalError = await waitFor(() =>
