@@ -37,12 +37,12 @@ describe("Given an uiReducer", () => {
 
   describe("When it receives a ui state with a isError false", () => {
     test("Then it should return the new state of the Ui", () => {
-      const initialUiState: UiStateStruture = { isError: false };
-      const newUiState: UiStateStruture = { isError: true };
+      const initialUiState: UiStateStruture = { isSuccess: false };
+      const newUiState: UiStateStruture = { isSuccess: true };
 
       const resultUiState = uiReducer(
         initialUiState,
-        showErrorActionCreator({ isError: true })
+        showErrorActionCreator({ isSuccess: true })
       );
 
       expect(resultUiState).toStrictEqual(newUiState);
@@ -51,8 +51,8 @@ describe("Given an uiReducer", () => {
 
   describe("When it receives a ui state with a isError to true", () => {
     test("then it should return the new state of the Ui", () => {
-      const initialState: UiStateStruture = { isError: true };
-      const newUiState: UiStateStruture = { isError: false };
+      const initialState: UiStateStruture = { isSuccess: true };
+      const newUiState: UiStateStruture = { isSuccess: false };
 
       const resultUiState = uiReducer(
         initialState,

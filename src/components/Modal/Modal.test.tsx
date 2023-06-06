@@ -47,7 +47,7 @@ describe("Given a Modal component", () => {
 
       const modal = createMemoryRouter(routes);
       renderWithProviders(<RouterProvider router={modal} />, {
-        ui: { isError: true },
+        ui: { isSuccess: true },
       });
 
       const backButton = screen.getByRole("button", { name: "back" });

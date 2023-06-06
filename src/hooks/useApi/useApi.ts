@@ -8,6 +8,9 @@ import {
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
 import paths from "../../routers/paths/paths";
+import modalData from "../../data/modalData";
+
+const { messages } = modalData;
 
 const useApi = () => {
   const { token } = useAppSelector((state) => state.user);
@@ -26,12 +29,15 @@ const useApi = () => {
       dispatch(hideLoadingActionCreator());
 
       return queens;
-    } catch (error) {
+    } catch {
       dispatch(hideLoadingActionCreator());
 
-      dispatch(showErrorActionCreator({ isError: true }));
-
-      throw error;
+      dispatch(
+        showErrorActionCreator({
+          isSuccess: false,
+          modalMessage: messages.failed,
+        })
+      );
     }
   }, [dispatch, token]);
 
