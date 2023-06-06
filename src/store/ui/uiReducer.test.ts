@@ -54,7 +54,10 @@ describe("Given an uiReducer", () => {
       const initialState: UiStateStruture = { isError: true };
       const newUiState: UiStateStruture = { isError: false };
 
-      const resultUiState = uiReducer(initialState, hideErrorActionCreator());
+      const resultUiState = uiReducer(
+        initialState,
+        hideErrorActionCreator(newUiState)
+      );
 
       expect(resultUiState).toStrictEqual(newUiState);
     });
