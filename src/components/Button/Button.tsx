@@ -4,7 +4,7 @@ interface ButtonProps {
   buttonA11Y: string;
   buttonClassName: string;
   text?: string;
-  actionOnClick: () => void;
+  actionOnClick?: () => void;
 }
 const Button = ({
   buttonImage,

@@ -25,13 +25,11 @@ const Card = ({ queen }: CardProps): React.ReactElement => {
       <span className="card__details">{queen.hometown}</span>
       <div className="card__buttons">
         <Button
-          actionOnClick={() => ({})}
           buttonImage={buttonPicture?.modify}
           buttonA11Y={buttonA11Y.modify}
           buttonClassName={buttonClassName.modify}
         ></Button>
         <Button
-          actionOnClick={() => ({})}
           buttonImage={buttonPicture?.Delete}
           buttonA11Y={buttonA11Y.delete}
           buttonClassName={buttonClassName.delete}
