@@ -35,10 +35,14 @@ describe("Given an uiReducer", () => {
     });
   });
 
-  describe("When it receives a ui state with a isError false", () => {
+  describe("When it receives a ui state with a Success true", () => {
     test("Then it should return the new state of the Ui", () => {
       const initialUiState: UiStateStruture = { isSuccess: false };
-      const newUiState: UiStateStruture = { isSuccess: true };
+      const newUiState: UiStateStruture = {
+        isSuccess: true,
+        feedback: true,
+        modalMessage: undefined,
+      };
 
       const resultUiState = uiReducer(
         initialUiState,
@@ -49,14 +53,18 @@ describe("Given an uiReducer", () => {
     });
   });
 
-  describe("When it receives a ui state with a isError to true", () => {
+  describe("When it receives a ui state with a success to false", () => {
     test("then it should return the new state of the Ui", () => {
       const initialState: UiStateStruture = { isSuccess: true };
-      const newUiState: UiStateStruture = { isSuccess: false };
+      const newUiState: UiStateStruture = {
+        isSuccess: false,
+        feedback: false,
+        modalMessage: "",
+      };
 
-      const resultUiState = uiReducer(initialState, hideModalActionCreator());
+      const newState = uiReducer(initialState, hideModalActionCreator());
 
-      expect(resultUiState).toStrictEqual(newUiState);
+      expect(newState).toStrictEqual(newUiState);
     });
   });
 });
