@@ -51,4 +51,18 @@ describe("Given a Modal component", () => {
       expect(title).not.toBeInTheDocument();
     });
   });
+
+  describe("When its rendered with a success message", () => {
+    test("Then it should show the success Yaas! title", () => {
+      renderWithProviders(<RouterProvider router={modal} />, {
+        ui: { isSuccess: true, feedback: true },
+      });
+      const successTitle = screen.getByRole("heading", {
+        level: 2,
+        name: "yaas!",
+      });
+
+      expect(successTitle).toBeInTheDocument();
+    });
+  });
 });
