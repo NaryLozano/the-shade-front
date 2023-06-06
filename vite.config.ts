@@ -17,6 +17,8 @@ export default defineConfig({
       src: ["src"],
       exclude: [
         "**/types.ts",
+        "**/buttonDataTypes.ts",
+        "**/modalDataTypes.ts",
         "**/*.test.ts",
         "**/*.test.tsx",
         "**/*.d.ts ",

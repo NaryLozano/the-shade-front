@@ -1,8 +1,8 @@
 import {
   UiStateStruture,
-  hideErrorActionCreator,
+  hideModalActionCreator,
   hideLoadingActionCreator,
-  showErrorActionCreator,
+  showModalActionCreator,
   showLoadingActionCreator,
   uiReducer,
 } from "./uiSlice";
@@ -35,31 +35,36 @@ describe("Given an uiReducer", () => {
     });
   });
 
-  describe("When it receives a ui state with a isError false", () => {
+  describe("When it receives a ui state with a Success true", () => {
     test("Then it should return the new state of the Ui", () => {
-      const initialUiState: UiStateStruture = { isError: false };
-      const newUiState: UiStateStruture = { isError: true };
+      const initialUiState: UiStateStruture = { isSuccess: false };
+      const newUiState: UiStateStruture = {
+        isSuccess: true,
+        feedback: true,
+        modalMessage: undefined,
+      };
 
       const resultUiState = uiReducer(
         initialUiState,
-        showErrorActionCreator({ isError: true })
+        showModalActionCreator({ isSuccess: true })
       );
 
       expect(resultUiState).toStrictEqual(newUiState);
     });
   });
 
-  describe("When it receives a ui state with a isError to true", () => {
+  describe("When it receives a ui state with a success to false", () => {
     test("then it should return the new state of the Ui", () => {
-      const initialState: UiStateStruture = { isError: true };
-      const newUiState: UiStateStruture = { isError: false };
+      const initialState: UiStateStruture = { isSuccess: true };
+      const newUiState: UiStateStruture = {
+        isSuccess: false,
+        feedback: false,
+        modalMessage: "",
+      };
 
-      const resultUiState = uiReducer(
-        initialState,
-        hideErrorActionCreator(newUiState)
-      );
+      const newState = uiReducer(initialState, hideModalActionCreator());
 
-      expect(resultUiState).toStrictEqual(newUiState);
+      expect(newState).toStrictEqual(newUiState);
     });
   });
 });

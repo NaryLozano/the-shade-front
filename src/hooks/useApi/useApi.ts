@@ -4,10 +4,13 @@ import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
   hideLoadingActionCreator,
-  showErrorActionCreator,
+  showModalActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
 import paths from "../../routers/paths/paths";
+import modalData from "../../data/modalData";
+
+const { messages } = modalData;
 
 const useApi = () => {
   const { token } = useAppSelector((state) => state.user);
@@ -26,12 +29,15 @@ const useApi = () => {
       dispatch(hideLoadingActionCreator());
 
       return queens;
-    } catch (error) {
+    } catch {
       dispatch(hideLoadingActionCreator());
 
-      dispatch(showErrorActionCreator({ isError: true }));
-
-      throw error;
+      dispatch(
+        showModalActionCreator({
+          isSuccess: false,
+          modalMessage: messages.failed,
+        })
+      );
     }
   }, [dispatch, token]);
 
