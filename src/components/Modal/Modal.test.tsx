@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
 import Modal from "./Modal";
-import modalData from "./modalData";
+import modalData from "../../data/modalData";
 import { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme/theme";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";

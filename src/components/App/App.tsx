@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useToken from "../../hooks/token/useToken";
+import useToken from "../../hooks/useToken/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/user/userSlice";
