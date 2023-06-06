@@ -1,6 +1,6 @@
 import { rest } from "msw";
 import { tokenMock } from "./mocks";
-import { apiUrl } from "../hooks/user/useUser";
+import { apiUrl } from "../hooks/useUser/useUser";
 import { queensMock } from "./queensMocks";
 import paths from "../routers/paths/paths";
 

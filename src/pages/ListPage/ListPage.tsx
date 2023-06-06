@@ -5,7 +5,7 @@ import { loadQueensActionCreator } from "../../store/queens/queensSlice";
 import List from "../../components/List/List";
 import useApi from "../../hooks/useApi/useApi";
 import Modal from "../../components/Modal/Modal";
-import modalData from "../../components/Modal/modalData";
+import modalData from "../../data/modalData";
 
 const ListPage = (): React.ReactElement => {
   const { queens } = useAppSelector((state) => state.queens);

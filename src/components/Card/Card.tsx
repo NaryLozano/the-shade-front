@@ -1,7 +1,7 @@
 import { QueenStructure } from "../../store/queens/types";
 import CardStyled from "./CardStyled";
 import Button from "../Button/Button";
-import buttonData from "../Button/buttonData";
+import buttonData from "../../data/buttonData";
 
 interface CardProps {
   queen: QueenStructure;
@@ -15,7 +15,8 @@ const Card = ({ queen }: CardProps): React.ReactElement => {
           className="card__img"
           src={queen.image}
           alt={queen.name}
-          width=""
+          width="240"
+          height="209"
         />
       </button>
 

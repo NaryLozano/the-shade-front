@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrl } from "../user/useUser";
+import { apiUrl } from "../useUser/useUser";
 import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {

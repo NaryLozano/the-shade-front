@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../../store";
 import { hideErrorActionCreator } from "../../store/ui/uiSlice";
 import Button from "../Button/Button";
-import buttonData from "../Button/buttonData";
+import buttonData from "../../data/buttonData";
 import ModalStyled from "./ModalStyled";
 
 interface ModalProps {
