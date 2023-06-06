@@ -26,11 +26,10 @@ const useApi = () => {
       dispatch(hideLoadingActionCreator());
 
       return queens;
-    } catch (error: unknown) {
+    } catch (error) {
       dispatch(hideLoadingActionCreator());
-      if (error) {
-        dispatch(showErrorActionCreator({ isError: true }));
-      }
+
+      dispatch(showErrorActionCreator({ isError: true }));
 
       throw error;
     }

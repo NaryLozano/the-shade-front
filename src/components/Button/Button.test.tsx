@@ -10,6 +10,7 @@ describe("Given a Button component", () => {
       renderWithProviders(
         wrapWithRouter(
           <Button
+            actionOnClick={() => ({})}
             buttonA11Y="modify"
             buttonImage={modify}
             buttonClassName="modify"
@@ -26,6 +27,7 @@ describe("Given a Button component", () => {
       renderWithProviders(
         wrapWithRouter(
           <Button
+            actionOnClick={() => ({})}
             buttonA11Y="delete"
             buttonImage={Delete}
             buttonClassName="delete"
