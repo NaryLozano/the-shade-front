@@ -1,19 +1,25 @@
+import Delete from "../../media/Delete.svg";
+import modify from "../../media/Lipstick.svg";
 interface buttonDataStructure {
-  buttonImage?: string;
-  text?: {
+  buttonPicture?: {
+    modify: string;
+    Delete: string;
+  };
+  content?: {
     back: string;
     login: string;
     loadmore: string;
     add: string;
     modify: string;
   };
-  buttonName: {
+  buttonA11Y: {
     next: string;
     previous: string;
     modify: string;
     delete: string;
+    back: string;
   };
-  className: {
+  buttonClassName: {
     modify: string;
     delete: string;
     primary: {
@@ -24,28 +30,32 @@ interface buttonDataStructure {
 }
 
 const buttonData: buttonDataStructure = {
-  text: {
+  content: {
     add: "add queen",
     back: "back",
     loadmore: "load more",
     login: "login",
     modify: "modify queen",
   },
-  buttonName: {
+  buttonA11Y: {
     delete: "delete",
     modify: "modify",
     next: "next",
     previous: "previous",
+    back: "back",
   },
-  className: {
+  buttonClassName: {
     delete: "delete",
     modify: "modify",
     primary: {
-      dark: "button__dark",
-      light: "button__light",
+      dark: "dark",
+      light: "light",
     },
   },
-  buttonImage: "",
+  buttonPicture: {
+    modify: modify,
+    Delete: Delete,
+  },
 };
 
 export default buttonData;

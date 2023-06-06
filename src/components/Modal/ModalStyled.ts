@@ -26,24 +26,25 @@ const ModalStyled = styled.div.attrs((props) => ({
     border-radius: 0.625rem;
     color: ${(prop) => prop.theme.colors.light};
     position: absolute;
-  }
-  .modal-title {
-    margin-top: 1.563rem;
-    font-size: 2.188rem;
-  }
 
-  .modal-error {
-    background: ${(prop) => prop.theme.colors.error};
-  }
+    &__title {
+      margin-top: 1.563rem;
+      font-size: 2.188rem;
+    }
 
-  .modal-ok {
-    background: ${(prop) => prop.theme.colors.okModal};
-  }
+    &__error {
+      background: ${(prop) => prop.theme.colors.error};
+    }
 
-  .text {
-    padding: 1.875rem;
-    font-size: 1.25rem;
-    text-align: center;
+    &__ok {
+      background: ${(prop) => prop.theme.colors.okModal};
+    }
+
+    &__content {
+      padding: 1.875rem;
+      font-size: 1.25rem;
+      text-align: center;
+    }
   }
 `;
 export default ModalStyled;

@@ -7,6 +7,7 @@ import {
   showErrorActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
+import paths from "../../routers/paths/paths";
 
 const useApi = () => {
   const { token } = useAppSelector((state) => state.user);
@@ -19,7 +20,7 @@ const useApi = () => {
 
       const {
         data: { queens },
-      } = await axios.get(`${apiUrl}/queens`, {
+      } = await axios.get(`${apiUrl}${paths.queens}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(hideLoadingActionCreator());

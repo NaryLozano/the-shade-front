@@ -21,15 +21,15 @@ const Navigation = (): React.ReactElement => {
 
   return (
     <NavigationStyled>
-      <NavLink to={"/add"}>Add</NavLink>
-      <NavLink to={"/home"}>Home</NavLink>
+      <NavLink to={paths.add}>Add</NavLink>
+      <NavLink to={paths.home}>Home</NavLink>
       {isLogged ? (
         <button onClick={handlingLogout} className="logout">
           Logout
         </button>
       ) : (
         ""
-      )}{" "}
+      )}
     </NavigationStyled>
   );
 };

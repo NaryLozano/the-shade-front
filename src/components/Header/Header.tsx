@@ -9,6 +9,8 @@ const Header = (): React.ReactElement => {
         src="./media/Logotype.svg"
         alt="The Shade of it all with drawing of Sasha Velour"
         loading="lazy"
+        width="4.375rem"
+        height="4.375rem"
       />
       <Navigation />
     </HeaderStyled>

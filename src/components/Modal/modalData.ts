@@ -36,8 +36,8 @@ const modalData: modalDataStructure = {
     OK: "yaas!",
   },
   className: {
-    error: "modal-error",
-    OK: "modal-ok",
+    error: "modal__error",
+    OK: "modal__ok",
   },
 };
 
