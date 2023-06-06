@@ -1,8 +1,8 @@
 import {
   UiStateStruture,
-  hideErrorActionCreator,
+  hideModalActionCreator,
   hideLoadingActionCreator,
-  showErrorActionCreator,
+  showModalActionCreator,
   showLoadingActionCreator,
   uiReducer,
 } from "./uiSlice";
@@ -42,7 +42,7 @@ describe("Given an uiReducer", () => {
 
       const resultUiState = uiReducer(
         initialUiState,
-        showErrorActionCreator({ isSuccess: true })
+        showModalActionCreator({ isSuccess: true })
       );
 
       expect(resultUiState).toStrictEqual(newUiState);
@@ -54,10 +54,7 @@ describe("Given an uiReducer", () => {
       const initialState: UiStateStruture = { isSuccess: true };
       const newUiState: UiStateStruture = { isSuccess: false };
 
-      const resultUiState = uiReducer(
-        initialState,
-        hideErrorActionCreator(newUiState)
-      );
+      const resultUiState = uiReducer(initialState, hideModalActionCreator());
 
       expect(resultUiState).toStrictEqual(newUiState);
     });

@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../store";
-import { hideErrorActionCreator } from "../../store/ui/uiSlice";
+import { hideModalActionCreator } from "../../store/ui/uiSlice";
 import Button from "../Button/Button";
 import buttonData from "../../data/buttonData";
 import ModalStyled from "./ModalStyled";
@@ -13,7 +13,7 @@ const Modal = (): React.ReactElement => {
   const { isSuccess, modalMessage } = useAppSelector((state) => state.ui);
 
   const handleHideModal = () => {
-    dispatch(hideErrorActionCreator());
+    dispatch(hideModalActionCreator());
   };
 
   return (

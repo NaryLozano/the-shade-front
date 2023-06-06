@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
   hideLoadingActionCreator,
-  showErrorActionCreator,
+  showModalActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
 import paths from "../../routers/paths/paths";
@@ -33,7 +33,7 @@ const useApi = () => {
       dispatch(hideLoadingActionCreator());
 
       dispatch(
-        showErrorActionCreator({
+        showModalActionCreator({
           isSuccess: false,
           modalMessage: messages.failed,
         })
