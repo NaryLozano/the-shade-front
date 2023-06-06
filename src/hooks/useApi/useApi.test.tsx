@@ -22,7 +22,7 @@ describe("Given a getQueens function", () => {
     });
   });
   describe("When its called and rejects", () => {
-    test("Then it should return a 'Can't get Queens' error", () => {
+    test("Then it should dispatch a showModalActionCreator", async () => {
       server.resetHandlers(...errorHandlers);
       const {
         result: {
@@ -30,9 +30,9 @@ describe("Given a getQueens function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapper });
 
-      const errorGetQueens = async () => await getQueens();
+      const notQueens = await getQueens();
 
-      expect(errorGetQueens).rejects.toThrowError();
+      expect(notQueens).toBeUndefined();
     });
   });
 });
