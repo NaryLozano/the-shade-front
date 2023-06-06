@@ -5,6 +5,7 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
+import paths from "../../routers/paths/paths";
 
 export const apiUrl = import.meta.env.VITE_APP_URL;
 
@@ -15,7 +16,10 @@ const useUser = () => {
       dispatch(showLoadingActionCreator());
       const {
         data: { token },
-      } = await axios.post<{ token: string }>(`${apiUrl}/user/login`, userData);
+      } = await axios.post<{ token: string }>(
+        `${apiUrl}${paths.user}${paths.login}`,
+        userData
+      );
       dispatch(hideLoadingActionCreator());
       return token;
     } catch {

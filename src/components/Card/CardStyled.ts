@@ -18,13 +18,14 @@ const CardStyled = styled.article`
       width: 15rem;
       height: 12.5rem;
       border-radius: 0.813rem;
-      box-shadow: none;
+      box-shadow: ${(props) => props.theme.colors.shadow};
       background-color: transparent;
+      padding: 0;
+      overflow: hidden;
     }
 
     &__img {
       width: 100%;
-      border-radius: 10px;
       border: ${(props) => props.theme.colors.borderPicture};
     }
 

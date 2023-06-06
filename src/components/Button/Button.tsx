@@ -2,17 +2,17 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
   buttonImage?: string;
   buttonA11Y: string;
-  className: string;
+  buttonClassName: string;
   text?: string;
 }
 const Button = ({
-  buttonImage: buttonImage,
-  buttonA11Y: buttonA11Y,
+  buttonImage,
+  buttonA11Y,
+  buttonClassName,
   text,
-  className,
 }: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled className={className}>
+    <ButtonStyled className={buttonClassName}>
       {buttonImage ? <img src={buttonImage} alt={buttonA11Y} /> : ""}
       {text}
     </ButtonStyled>

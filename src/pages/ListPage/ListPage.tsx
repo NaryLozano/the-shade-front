@@ -11,6 +11,7 @@ const ListPage = (): React.ReactElement => {
   const { queens } = useAppSelector((state) => state.queens);
   const { isError } = useAppSelector((state) => state.ui);
   const { getQueens } = useApi();
+  const { className, messages, modaltype } = modalData;
 
   const dispatch = useAppDispatch();
 
@@ -25,9 +26,9 @@ const ListPage = (): React.ReactElement => {
     <ListPageStyled>
       {isError && (
         <Modal
-          className={modalData.className.error}
-          modaltype={modalData.modaltype.error}
-          text={modalData.messages.failed}
+          className={className.error}
+          modaltype={modaltype.error}
+          text={messages.failed}
         />
       )}
       <h1>Drag Queens</h1>

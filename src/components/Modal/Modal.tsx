@@ -7,20 +7,22 @@ interface ModalProps {
   modaltype: string;
   className: string;
 }
+const { buttonA11Y, buttonClassName, content } = buttonData;
+
 const Modal = ({
   text,
   modaltype,
   className,
 }: ModalProps): React.ReactElement => {
   return (
-    <ModalStyled>
+    <ModalStyled className="modal">
       <article className={`modal ${className}`}>
-        <h2 className="modal-title">{modaltype}</h2>
-        <span className="text">{text}</span>
+        <h2 className="modal__title">{modaltype}</h2>
+        <span className="modal__content">{text}</span>
         <Button
-          buttonA11Y={buttonData.buttonName.delete}
-          text={buttonData.text?.back}
-          className="light"
+          buttonA11Y={buttonA11Y.back}
+          text={content?.back}
+          buttonClassName={buttonClassName.primary.light}
         ></Button>
       </article>
     </ModalStyled>
