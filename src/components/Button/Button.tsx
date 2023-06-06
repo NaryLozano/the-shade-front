@@ -4,15 +4,17 @@ interface ButtonProps {
   buttonA11Y: string;
   buttonClassName: string;
   text?: string;
+  actionOnClick?: () => void;
 }
 const Button = ({
   buttonImage,
   buttonA11Y,
   buttonClassName,
   text,
+  actionOnClick,
 }: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled className={buttonClassName}>
+    <ButtonStyled className={buttonClassName} onClick={actionOnClick}>
       {buttonImage ? <img src={buttonImage} alt={buttonA11Y} /> : ""}
       {text}
     </ButtonStyled>
