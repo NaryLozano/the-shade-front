@@ -5,6 +5,7 @@ const paths = {
   add: "/add",
   queens: "/queens",
   user: "/user",
+  notFound: "/*",
 };
 
 export default paths;
