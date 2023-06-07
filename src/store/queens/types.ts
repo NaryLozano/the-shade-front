@@ -10,5 +10,5 @@ export interface QueenStructure {
 
 export interface QueensState {
   queens: QueenStructure[];
-  queen: QueenStructure | undefined;
+  queen?: QueenStructure;
 }

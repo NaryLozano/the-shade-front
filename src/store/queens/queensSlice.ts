@@ -3,7 +3,6 @@ import { QueenStructure, QueensState } from "./types";
 
 const InitialQueensState: QueensState = {
   queens: [],
-  queen: undefined,
 };
 
 export const queensSlice = createSlice({
@@ -17,11 +16,13 @@ export const queensSlice = createSlice({
     ): QueensState => ({ ...currentQueens, queens: [...action.payload] }),
 
     deleteQueen: (
-      currentQueens,
-      action: PayloadAction<string>
+      currentQueens: QueensState,
+      action: PayloadAction<string | undefined>
     ): QueensState => ({
       ...currentQueens,
-      queen: currentQueens.queens.find((queen) => queen.id === action.payload),
+      queens: currentQueens.queens.filter(
+        (queen) => queen.id !== action.payload
+      ),
     }),
   },
 });
