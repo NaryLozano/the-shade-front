@@ -1,5 +1,9 @@
 import { queensMock } from "../../mocks/queensMocks";
-import { loadQueensActionCreator, queenReducer } from "./queensSlice";
+import {
+  deleteQueenActionCreator,
+  loadQueensActionCreator,
+  queenReducer,
+} from "./queensSlice";
 import { QueenStructure, QueensState } from "./types";
 
 describe("Given an userReducer", () => {
@@ -19,6 +23,25 @@ describe("Given an userReducer", () => {
       const newState: QueensState = queenReducer(currentState, queens);
 
       expect(expectedNewQueensState).toStrictEqual(newState);
+    });
+  });
+
+  describe("When it receives an id an a delete queen action", () => {
+    test("Then it should return the actualized list of queens", () => {
+      const queens = queensMock;
+      const currentState: QueensState = {
+        queens: queens,
+      };
+
+      const expectedNewState: QueensState = {
+        queens: queens.slice(1),
+      };
+
+      const deleteQueen = deleteQueenActionCreator(queens[0].id);
+
+      const newState = queenReducer(currentState, deleteQueen);
+
+      expect(newState).toStrictEqual(expectedNewState);
     });
   });
 });
