@@ -19,13 +19,12 @@ describe("Given a Modal component", () => {
   ];
 
   const modal = createMemoryRouter(routes);
-
   describe("When it's rendered with an error message", () => {
     test("Then it should show the title of error 'OOPS!'", () => {
       const expectedTitle = "oops!";
 
       renderWithProviders(<RouterProvider router={modal} />, {
-        ui: { isSuccess: false, feedback: true },
+        ui: { modalData: { isSuccess: false, showFeedback: true } },
       });
 
       const errorTitle = screen.getByRole("heading", {
@@ -40,7 +39,7 @@ describe("Given a Modal component", () => {
   describe("When its rendered and receives a user click on the button", () => {
     test("Then it shouldn't show the modal", async () => {
       renderWithProviders(<RouterProvider router={modal} />, {
-        ui: { isSuccess: false, feedback: true },
+        ui: { modalData: { isSuccess: false, showFeedback: true } },
       });
 
       const backButton = screen.getByRole("button", { name: "back" });
@@ -54,8 +53,20 @@ describe("Given a Modal component", () => {
 
   describe("When its rendered with a success message", () => {
     test("Then it should show the success Yaas! title", () => {
+      const routes = [
+        {
+          path: "/",
+          element: (
+            <ThemeProvider theme={theme}>
+              <Layout />
+            </ThemeProvider>
+          ),
+        },
+      ];
+
+      const modal = createMemoryRouter(routes);
       renderWithProviders(<RouterProvider router={modal} />, {
-        ui: { isSuccess: true, feedback: true },
+        ui: { modalData: { isSuccess: true, showFeedback: true } },
       });
       const successTitle = screen.getByRole("heading", {
         level: 2,

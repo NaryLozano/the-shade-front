@@ -1,6 +1,10 @@
 import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
-  buttonImage?: string;
+  buttonImage?: {
+    width: string | undefined;
+    height: string | undefined;
+    img: string | undefined;
+  };
   buttonA11Y: string;
   buttonClassName: string;
   text?: string;
@@ -15,7 +19,16 @@ const Button = ({
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled className={buttonClassName} onClick={actionOnClick}>
-      {buttonImage ? <img src={buttonImage} alt={buttonA11Y} /> : ""}
+      {buttonImage ? (
+        <img
+          src={buttonImage.img}
+          alt={buttonA11Y}
+          height={buttonImage.height}
+          width={buttonImage.width}
+        />
+      ) : (
+        ""
+      )}
       {text}
     </ButtonStyled>
   );

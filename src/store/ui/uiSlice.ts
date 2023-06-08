@@ -2,14 +2,18 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UiStateStruture {
   isLoading?: boolean;
-  isSuccess?: boolean;
-  feedback?: boolean;
-  modalMessage?: string;
+  modalData?: {
+    isSuccess?: boolean;
+    showFeedback?: boolean;
+    modalMessage?: string;
+  };
 }
 const uiState: UiStateStruture = {
   isLoading: false,
-  isSuccess: true,
-  feedback: false,
+  modalData: {
+    isSuccess: true,
+    showFeedback: false,
+  },
 };
 const uiSlice = createSlice({
   name: "ui",
@@ -30,16 +34,20 @@ const uiSlice = createSlice({
       action: PayloadAction<UiStateStruture>
     ) => ({
       ...currentUiState,
-      isSuccess: action.payload.isSuccess,
-      feedback: true,
-      modalMessage: action.payload.modalMessage,
+      modalData: {
+        isSuccess: action.payload.modalData?.isSuccess,
+        modalMessage: action.payload.modalData?.modalMessage,
+        showFeedback: true,
+      },
     }),
 
     hideModal: (currentuiState: UiStateStruture) => ({
       ...currentuiState,
-      isSuccess: false,
-      feedback: false,
-      modalMessage: "",
+      modalData: {
+        isSuccess: false,
+        feedback: false,
+        modalMessage: "",
+      },
     }),
   },
 });

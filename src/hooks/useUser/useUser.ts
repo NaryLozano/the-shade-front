@@ -7,7 +7,7 @@ import {
   showModalActionCreator,
 } from "../../store/ui/uiSlice";
 import paths from "../../routers/paths/paths";
-import modalData from "../../data/modalData";
+import modalData from "../../data/modal/modalData";
 
 export const apiUrl = import.meta.env.VITE_APP_URL;
 
@@ -33,8 +33,10 @@ const useUser = () => {
       dispatch(hideLoadingActionCreator());
       dispatch(
         showModalActionCreator({
-          isSuccess: false,
-          modalMessage: messages.invalid,
+          modalData: {
+            isSuccess: false,
+            modalMessage: messages.invalid,
+          },
         })
       );
       throw messages.invalid;
