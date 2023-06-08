@@ -8,7 +8,7 @@ import {
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
 import paths from "../../routers/paths/paths";
-import modalData from "../../data/modalData";
+import modalData from "../../data/modal/modalData";
 
 const { messages } = modalData;
 
@@ -34,8 +34,10 @@ const useApi = () => {
 
       dispatch(
         showModalActionCreator({
-          isSuccess: false,
-          modalMessage: messages.failed,
+          modalData: {
+            isSuccess: false,
+            modalMessage: messages.failed,
+          },
         })
       );
     }

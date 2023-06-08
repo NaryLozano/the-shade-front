@@ -5,7 +5,7 @@ import useUser from "./useUser";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
 import { wrapper } from "../../utils/testUtils";
-import modalData from "../../data/modalData";
+import modalData from "../../data/modal/modalData";
 
 const { invalid } = modalData.messages;
 

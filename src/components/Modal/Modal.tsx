@@ -1,16 +1,16 @@
 import { useAppDispatch, useAppSelector } from "../../store";
 import { hideModalActionCreator } from "../../store/ui/uiSlice";
 import Button from "../Button/Button";
-import buttonData from "../../data/buttonData";
+import buttonData from "../../data/button/buttonData";
 import ModalStyled from "./ModalStyled";
-import modalData from "../../data/modalData";
+import modalData from "../../data/modal/modalData";
 
 const { buttonA11Y, buttonClassName, content } = buttonData;
 const { modaltype } = modalData;
 const Modal = (): React.ReactElement => {
   const dispatch = useAppDispatch();
 
-  const { isSuccess, modalMessage } = useAppSelector((state) => state.ui);
+  const { modalData } = useAppSelector((state) => state.ui);
 
   const handleHideModal = () => {
     dispatch(hideModalActionCreator());
@@ -18,11 +18,13 @@ const Modal = (): React.ReactElement => {
 
   return (
     <ModalStyled className="modal">
-      <article className={`modal modal${isSuccess ? "__ok" : "__error"}`}>
+      <article
+        className={`modal modal${modalData?.isSuccess ? "__ok" : "__error"}`}
+      >
         <h2 className="modal__title">{`${
-          isSuccess ? modaltype.OK : modaltype.error
+          modalData?.isSuccess ? modaltype.OK : modaltype.error
         }`}</h2>
-        <span className="modal__content">{modalMessage}</span>
+        <span className="modal__content">{modalData?.modalMessage}</span>
         <Button
           actionOnClick={handleHideModal}
           buttonA11Y={buttonA11Y.back}

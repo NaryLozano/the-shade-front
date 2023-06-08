@@ -1,7 +1,15 @@
 interface buttonDataStructure {
   buttonPicture?: {
-    modify: string;
-    Delete: string;
+    modify: {
+      img: string;
+      width: string;
+      height: string;
+    };
+    delete: {
+      deleteImg: string;
+      widht: string;
+      height: string;
+    };
   };
   content?: {
     back: string;

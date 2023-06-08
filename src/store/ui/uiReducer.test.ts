@@ -1,6 +1,5 @@
 import {
   UiStateStruture,
-  hideModalActionCreator,
   hideLoadingActionCreator,
   showModalActionCreator,
   showLoadingActionCreator,
@@ -37,16 +36,20 @@ describe("Given an uiReducer", () => {
 
   describe("When it receives a ui state with a Success true", () => {
     test("Then it should return the new state of the Ui", () => {
-      const initialUiState: UiStateStruture = { isSuccess: false };
+      const initialUiState: UiStateStruture = {
+        modalData: { isSuccess: false },
+      };
       const newUiState: UiStateStruture = {
-        isSuccess: true,
-        feedback: true,
-        modalMessage: undefined,
+        modalData: {
+          isSuccess: true,
+          showFeedback: true,
+          modalMessage: undefined,
+        },
       };
 
       const resultUiState = uiReducer(
         initialUiState,
-        showModalActionCreator({ isSuccess: true })
+        showModalActionCreator({ modalData: { isSuccess: true } })
       );
 
       expect(resultUiState).toStrictEqual(newUiState);
@@ -55,14 +58,21 @@ describe("Given an uiReducer", () => {
 
   describe("When it receives a ui state with a success to false", () => {
     test("then it should return the new state of the Ui", () => {
-      const initialState: UiStateStruture = { isSuccess: true };
+      const initialState: UiStateStruture = {
+        modalData: { isSuccess: false },
+      };
       const newUiState: UiStateStruture = {
-        isSuccess: false,
-        feedback: false,
-        modalMessage: "",
+        modalData: {
+          isSuccess: false,
+          showFeedback: true,
+          modalMessage: undefined,
+        },
       };
 
-      const newState = uiReducer(initialState, hideModalActionCreator());
+      const newState = uiReducer(
+        initialState,
+        showModalActionCreator({ modalData: { isSuccess: false } })
+      );
 
       expect(newState).toStrictEqual(newUiState);
     });

@@ -1,8 +1,9 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders, wrapWithRouter } from "../../utils/testUtils";
 import Button from "./Button";
-import modify from "../../media/Lipstick.svg";
-import Delete from "../../media/Delete.svg";
+import buttonData from "../../data/button/buttonData";
+
+const { buttonPicture } = buttonData;
 
 describe("Given a Button component", () => {
   describe("When it's rendered with a modify name", () => {
@@ -12,7 +13,11 @@ describe("Given a Button component", () => {
           <Button
             actionOnClick={() => ({})}
             buttonA11Y="modify"
-            buttonImage={modify}
+            buttonImage={{
+              width: buttonPicture?.modify.width,
+              height: buttonPicture?.modify.height,
+              img: buttonPicture?.modify.img,
+            }}
             buttonClassName="modify"
           />
         )
@@ -22,6 +27,7 @@ describe("Given a Button component", () => {
       expect(buttonModify).toBeInTheDocument();
     });
   });
+
   describe("When its rendered with a delete name", () => {
     test("Then it should show a button with a pink 'X'", () => {
       renderWithProviders(
@@ -29,7 +35,11 @@ describe("Given a Button component", () => {
           <Button
             actionOnClick={() => ({})}
             buttonA11Y="delete"
-            buttonImage={Delete}
+            buttonImage={{
+              width: buttonPicture?.delete.widht,
+              height: buttonPicture?.delete.height,
+              img: buttonPicture?.delete.deleteImg,
+            }}
             buttonClassName="delete"
           />
         )

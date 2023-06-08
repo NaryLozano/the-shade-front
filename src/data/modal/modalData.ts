@@ -1,4 +1,4 @@
-import modalDataStructure from "./modalDataTypes";
+import modalDataStructure from "./types";
 
 const modalData: modalDataStructure = {
   messages: {

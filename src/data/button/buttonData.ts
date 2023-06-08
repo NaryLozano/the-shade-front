@@ -1,6 +1,7 @@
-import Delete from "../media/Delete.svg";
-import modify from "../media/Lipstick.svg";
-import buttonDataStructure from "./buttonDataTypes";
+import remove from "../../media/Delete.svg";
+import modify from "../../media/Lipstick.svg";
+
+import buttonDataStructure from "./types";
 
 const buttonData: buttonDataStructure = {
   content: {
@@ -26,8 +27,16 @@ const buttonData: buttonDataStructure = {
     },
   },
   buttonPicture: {
-    modify: modify,
-    Delete: Delete,
+    modify: {
+      img: modify,
+      width: "43",
+      height: "43",
+    },
+    delete: {
+      deleteImg: remove,
+      widht: "20",
+      height: "20",
+    },
   },
 };
 
