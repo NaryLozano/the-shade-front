@@ -42,7 +42,7 @@ const Card = ({
           }}
           buttonA11Y={buttonA11Y.modify}
           buttonClassName={buttonClassName.modify}
-        ></Button>
+        />
         <Button
           buttonImage={{
             width: buttonPicture?.delete.widht,
@@ -52,7 +52,7 @@ const Card = ({
           buttonA11Y={buttonA11Y.delete}
           buttonClassName={buttonClassName.delete}
           actionOnClick={handleDelete}
-        ></Button>
+        />
       </div>
     </CardStyled>
   );

@@ -54,6 +54,15 @@ const useApi = () => {
       dispatch(deleteQueenActionCreator(id));
 
       dispatch(hideLoadingActionCreator());
+      dispatch(
+        showModalActionCreator({
+          modalData: {
+            isSuccess: true,
+            showFeedback: true,
+            modalMessage: messages.deleteOk,
+          },
+        })
+      );
       return status;
     } catch {
       dispatch(hideLoadingActionCreator()),
