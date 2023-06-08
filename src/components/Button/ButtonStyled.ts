@@ -21,6 +21,18 @@ const ButtonStyled = styled.button.attrs((props) => ({
     font-weight: bold;
   }
 
+  &.dark {
+    width: 17.5rem;
+    height: 3.125rem;
+    color: ${(prop) => prop.theme.colors.darkPrimary};
+    background-color: ${(prop) => prop.theme.colors.primary};
+    font-family: inherit;
+    border-radius: 0.625rem;
+    font-family: ${(prop) => prop.theme.fonts.primary};
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
   &.delete {
     border-radius: 3.125rem;
     background-color: ${(prop) => prop.theme.colors.mediumLight};

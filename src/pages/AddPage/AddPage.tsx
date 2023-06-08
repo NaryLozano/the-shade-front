@@ -1,5 +1,13 @@
+import Form from "../../components/Form/Form";
+import AddPageStyled from "./AddPageStyled";
+
 const AddPage = (): React.ReactElement => {
-  return <h1>add queen</h1>;
+  return (
+    <AddPageStyled className="add">
+      <h1 className="add__title">add queen</h1>
+      <Form />
+    </AddPageStyled>
+  );
 };
 
 export default AddPage;
