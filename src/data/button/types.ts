@@ -24,6 +24,7 @@ interface buttonDataStructure {
     modify: string;
     delete: string;
     back: string;
+    add: string;
   };
   buttonClassName: {
     modify: string;
