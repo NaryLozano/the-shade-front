@@ -10,7 +10,10 @@ const LoginForm = ({ loginSubmit }: LoginProps): React.ReactElement => {
   const [loginData, setLoginData] = useState(emptyCredentials);
 
   const onChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginData({ ...loginData, [event.target.id]: event.target.value });
+    setLoginData({
+      ...loginData,
+      [event.target.id]: event.target.value.toLowerCase(),
+    });
   };
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
