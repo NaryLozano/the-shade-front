@@ -19,7 +19,7 @@ const Modal = (): React.ReactElement => {
   return (
     <ModalStyled className="modal">
       <article
-        className={`modal modal${modalData?.isSuccess ? "__ok" : "__error"}`}
+        className={`modal modal${modalData?.isSuccess ? "--ok" : "--error"}`}
       >
         <h2 className="modal__title">{`${
           modalData?.isSuccess ? modaltype.OK : modaltype.error

@@ -23,8 +23,8 @@ export const getUserMockData = (
 };
 
 const userCredentialsFactory = Factory.define<UserCredentials>(() => ({
-  username: faker.internet.userName(),
-  password: faker.string.alphanumeric(10),
+  username: faker.internet.userName().toLowerCase(),
+  password: faker.string.alphanumeric(10).toLowerCase(),
 }));
 
 export const getMockUserCredentials = (data?: UserCredentials) => {

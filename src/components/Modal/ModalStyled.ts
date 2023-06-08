@@ -32,11 +32,11 @@ const ModalStyled = styled.div.attrs((props) => ({
       font-size: 2.188rem;
     }
 
-    &__error {
+    &--error {
       background: ${(prop) => prop.theme.colors.error};
     }
 
-    &__ok {
+    &--ok {
       background: ${(prop) => prop.theme.colors.okModal};
     }
 
