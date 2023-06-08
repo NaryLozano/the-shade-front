@@ -1,7 +1,7 @@
 import { rest } from "msw";
 import { tokenMock } from "./mocks";
 import { apiUrl } from "../hooks/useUser/useUser";
-import { queensMock } from "./queensMocks";
+import { queenMock, queensMock } from "./queensMocks";
 import paths from "../routers/paths/paths";
 
 export const handlers = [
@@ -12,6 +12,10 @@ export const handlers = [
   rest.get(`${apiUrl}${paths.queens}`, (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ queens: queensMock }));
   }),
+
+  rest.delete(`${apiUrl}${paths.queens}/${queenMock.id}`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json("Queen deleted!"));
+  }),
 ];
 
 export const errorHandlers = [
@@ -20,5 +24,9 @@ export const errorHandlers = [
   }),
   rest.get(`${apiUrl}${paths.queens}`, (_req, res, ctx) => {
     return res(ctx.status(401));
+  }),
+
+  rest.delete(`${apiUrl}${paths.queens}/${queenMock.id}`, (_req, res, ctx) => {
+    return res(ctx.status(404));
   }),
 ];

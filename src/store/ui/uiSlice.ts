@@ -45,7 +45,7 @@ const uiSlice = createSlice({
       ...currentuiState,
       modalData: {
         isSuccess: false,
-        feedback: false,
+        showFeedback: false,
         modalMessage: "",
       },
     }),
