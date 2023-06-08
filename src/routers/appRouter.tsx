@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
 import App from "../components/App/App";
 import { Suspense } from "react";
 import {
+  LazyAdd,
   LazyList,
   LazyLogin,
   LazyNotFound,
@@ -36,6 +37,14 @@ export const routes: RouteObject[] = [
         element: (
           <Suspense>
             <LazyNotFound />
+          </Suspense>
+        ),
+      },
+      {
+        path: paths.add,
+        element: (
+          <Suspense>
+            <LazyAdd />
           </Suspense>
         ),
       },

@@ -17,6 +17,7 @@ const buttonData: buttonDataStructure = {
     next: "next",
     previous: "previous",
     back: "back",
+    add: "add",
   },
   buttonClassName: {
     delete: "delete",

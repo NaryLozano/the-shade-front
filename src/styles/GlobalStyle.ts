@@ -43,6 +43,13 @@ button {
 input {
   font: inherit;
   border: none;
+  text-transform: uppercase;
+}
+
+textarea {
+  font: inherit;
+  border: none;
+  text-transform: uppercase;
 }
 
 a {
