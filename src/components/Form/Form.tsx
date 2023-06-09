@@ -4,13 +4,13 @@ import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
 
 const formState = {
-  name: "mama ru",
+  name: "",
   age: 35,
   season: 1,
-  rank: "5th",
-  hometown: "Barcelona",
-  quote: "no t",
-  pictureUrl: "url",
+  rank: "",
+  hometown: "",
+  quote: "",
+  pictureUrl: "",
 };
 const Form = (): React.ReactElement => {
   const [formData, setFormdata] = useState(formState);
@@ -21,7 +21,7 @@ const Form = (): React.ReactElement => {
   ) => {
     setFormdata({
       ...formData,
-      [event.target.id]: event.target.value.toLowerCase(),
+      [event.target.id]: event.target.value,
     });
   };
   return (
@@ -76,7 +76,7 @@ const Form = (): React.ReactElement => {
           className="formulary__input"
           type="text"
           id="hometown"
-          placeholder="barcelona, cat"
+          placeholder="barcelona,cat"
           value={formData.hometown}
           onChange={onChangeForm}
         />
@@ -105,7 +105,6 @@ const Form = (): React.ReactElement => {
         buttonClassName={buttonClassName.primary.dark}
         buttonA11Y={buttonA11Y.add}
         text={content?.add}
-        actionOnClick={() => ({})}
       />
     </FormStyled>
   );
