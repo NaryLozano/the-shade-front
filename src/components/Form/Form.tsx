@@ -5,14 +5,18 @@ import FormStyled from "./FormStyled";
 
 const formState = {
   name: "",
-  age: 35,
-  season: 1,
+  age: "",
+  season: "",
   rank: "",
   hometown: "",
   quote: "",
   pictureUrl: "",
 };
-const Form = (): React.ReactElement => {
+
+interface FormProps {
+  submitForm: () => void;
+}
+const Form = ({ submitForm }: FormProps): React.ReactElement => {
   const [formData, setFormdata] = useState(formState);
   const { buttonA11Y, buttonClassName, content } = buttonData;
 
@@ -24,8 +28,9 @@ const Form = (): React.ReactElement => {
       [event.target.id]: event.target.value,
     });
   };
+
   return (
-    <FormStyled className="formulary">
+    <FormStyled className="formulary" onSubmit={submitForm}>
       <label htmlFor="name" className="formulary">
         name
         <input
@@ -35,28 +40,31 @@ const Form = (): React.ReactElement => {
           placeholder="mama ru"
           value={formData.name}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="age" className="formulary">
         age
         <input
-          type="text"
+          type="number"
           className="formulary__input"
           id="age"
           placeholder="35"
           value={formData.age}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="season" className="formulary">
         season
         <input
           className="formulary__input"
-          type="text"
+          type="number"
           id="season"
           placeholder="1"
           value={formData.season}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="rank" className="formulary">
@@ -68,6 +76,7 @@ const Form = (): React.ReactElement => {
           placeholder="5th"
           value={formData.rank}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="hometown" className="formulary">
@@ -79,6 +88,7 @@ const Form = (): React.ReactElement => {
           placeholder="barcelona,cat"
           value={formData.hometown}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="quote" className="formulary">
@@ -89,22 +99,24 @@ const Form = (): React.ReactElement => {
           placeholder="'no t, no shade, no pink lemonade'"
           value={formData.quote}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="picture" className="formulary">
         picture url
         <textarea
           className="formulary__area"
-          id="picture"
-          placeholder="https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e3/Ru_in_drag.jpg/revision/latest/scale-to-width-down/1000?cb=20190725062231"
+          id="pictureUrl"
           value={formData.pictureUrl}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <Button
         buttonClassName={buttonClassName.primary.dark}
         buttonA11Y={buttonA11Y.add}
         text={content?.add}
+        actionOnClick={submitForm}
       />
     </FormStyled>
   );

@@ -5,7 +5,7 @@ const AddPage = (): React.ReactElement => {
   return (
     <AddPageStyled className="add">
       <h1 className="add__title">add queen</h1>
-      <Form />
+      <Form submitForm={() => ({})} />
     </AddPageStyled>
   );
 };
