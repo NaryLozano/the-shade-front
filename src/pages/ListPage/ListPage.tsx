@@ -15,6 +15,19 @@ const ListPage = (): React.ReactElement => {
     (async () => {
       const queens = await getQueens();
       dispatch(loadQueensActionCreator(queens));
+
+      const firstImage = queens[0].image;
+
+      const preload = await document.createElement("link");
+
+      preload.rel = "preLoad";
+      preload.as = "image";
+      preload.href = firstImage;
+
+      const headDocument = document.head;
+      const firstElement = document.head.firstChild;
+
+      headDocument.insertBefore(preload, firstElement);
     })();
   }, [dispatch, getQueens]);
 
