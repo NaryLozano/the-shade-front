@@ -18,6 +18,7 @@ const buttonData: buttonDataStructure = {
     previous: "previous",
     back: "back",
     add: "add",
+    login: "login",
   },
   buttonClassName: {
     delete: "delete",
@@ -39,6 +40,7 @@ const buttonData: buttonDataStructure = {
       height: "20",
     },
   },
+  buttonType: "submit",
 };
 
 export default buttonData;
