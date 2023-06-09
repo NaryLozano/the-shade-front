@@ -10,6 +10,7 @@ import {
 import paths from "../../routers/paths/paths";
 import modalData from "../../data/modal/modalData";
 import { deleteQueenActionCreator } from "../../store/queens/queensSlice";
+import { QueenStructure } from "../../store/queens/types";
 
 const { messages } = modalData;
 
@@ -74,7 +75,39 @@ const useApi = () => {
     }
   };
 
-  return { getQueens, deleteQueen };
+  const addQueen = async (queenToAdd: QueenStructure) => {
+    try {
+      dispatch(showLoadingActionCreator());
+      const {
+        data: { queen },
+      } = await axios.post(`${paths.queens}${paths.add}`, {
+        headers: { Authorization: `Bearer ${token}` },
+        queenToAdd,
+      });
+      dispatch(
+        showModalActionCreator({
+          modalData: {
+            isSuccess: true,
+            showFeedback: true,
+            modalMessage: messages.addOk,
+          },
+        })
+      );
+      return queen;
+    } catch {
+      dispatch(hideLoadingActionCreator());
+      dispatch(
+        showModalActionCreator({
+          modalData: {
+            isSuccess: false,
+            modalMessage: messages.addFail,
+          },
+        })
+      );
+      throw messages.addFail;
+    }
+  };
+  return { getQueens, deleteQueen, addQueen };
 };
 
 export default useApi;
