@@ -1,5 +1,6 @@
-import { queensMock } from "../../mocks/queensMocks";
+import { queenMock4, queensMock } from "../../mocks/queensMocks";
 import {
+  addQueenActionCreator,
   deleteQueenActionCreator,
   loadQueensActionCreator,
   queenReducer,
@@ -40,6 +41,27 @@ describe("Given an userReducer", () => {
       const deleteQueen = deleteQueenActionCreator(queens[0].id);
 
       const newState = queenReducer(currentState, deleteQueen);
+
+      expect(newState).toStrictEqual(expectedNewState);
+    });
+  });
+
+  describe("When it receives a queen and an Add queen action", () => {
+    test("Then it should return the new state of the list with 4 queens", () => {
+      const queens = queensMock;
+
+      const currentState: QueensState = {
+        queens: queens,
+      };
+
+      const expectedNewState: QueensState = {
+        ...currentState,
+        queens: [...currentState.queens, queenMock4],
+      };
+
+      const addQueen = addQueenActionCreator(queenMock4);
+
+      const newState = queenReducer(currentState, addQueen);
 
       expect(newState).toStrictEqual(expectedNewState);
     });
