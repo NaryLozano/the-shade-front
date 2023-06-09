@@ -24,12 +24,21 @@ export const queensSlice = createSlice({
         (queen) => queen.id !== action.payload
       ),
     }),
+
+    addQueen: (
+      currentQueens: QueensState,
+      action: PayloadAction<QueenStructure>
+    ): QueensState => ({
+      ...currentQueens,
+      queens: [...currentQueens.queens, action.payload],
+    }),
   },
 });
 
 export const {
   loadQueens: loadQueensActionCreator,
   deleteQueen: deleteQueenActionCreator,
+  addQueen: addQueenActionCreator,
 } = queensSlice.actions;
 
 export const queenReducer = queensSlice.reducer;
