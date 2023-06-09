@@ -25,6 +25,7 @@ interface buttonDataStructure {
     delete: string;
     back: string;
     add: string;
+    login: string;
   };
   buttonClassName: {
     modify: string;
@@ -34,6 +35,7 @@ interface buttonDataStructure {
       light: string;
     };
   };
+  buttonType: string;
 }
 
 export default buttonDataStructure;

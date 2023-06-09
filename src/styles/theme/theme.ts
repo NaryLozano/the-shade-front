@@ -5,7 +5,7 @@ const theme: DefaultTheme = {
     light: "#fff",
     lightSecondary: "#efebe5",
     dark: "#c1121f",
-    darkSecondary: "#b24195e6",
+    darkSecondary: "#b24195",
     darkOpacity: "#ffffffe0",
     error: "linear-gradient(180deg, #ff4040e6 0%, #ff307a97 71.88%)",
     backgroundCard: "#f5f5f5",

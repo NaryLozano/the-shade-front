@@ -13,7 +13,7 @@ const ModalStyled = styled.div.attrs((props) => ({
   flex-direction: column;
   color: ${(prop) => prop.theme.colors.light};
   top: 0;
-  position: absolute;
+  position: fixed;
 
   .modal {
     width: 17.813rem;
@@ -25,7 +25,7 @@ const ModalStyled = styled.div.attrs((props) => ({
     flex-direction: column;
     border-radius: 0.625rem;
     color: ${(prop) => prop.theme.colors.light};
-    position: absolute;
+    position: fixed;
 
     &__title {
       margin-top: 1.563rem;
@@ -34,10 +34,13 @@ const ModalStyled = styled.div.attrs((props) => ({
 
     &--error {
       background: ${(prop) => prop.theme.colors.error};
+      color: ${(prop) => prop.theme.colors.darkPrimary};
+      font-weight: bold;
     }
 
     &--ok {
       background: ${(prop) => prop.theme.colors.okModal};
+      color: ${(prop) => prop.theme.colors.darkPrimary};
     }
 
     &__content {

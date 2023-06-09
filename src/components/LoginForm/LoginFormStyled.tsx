@@ -27,6 +27,7 @@ const LoginFormStyled = styled.form`
   }
   .login-form__button:disabled {
     background-color: ${(prop) => prop.theme.colors.dissabled};
+    color: ${(prop) => prop.theme.colors.darkPrimary};
   }
 `;
 export default LoginFormStyled;
