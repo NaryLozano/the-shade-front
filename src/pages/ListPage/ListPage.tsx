@@ -4,6 +4,7 @@ import ListPageStyled from "./ListPageStyled";
 import { loadQueensActionCreator } from "../../store/queens/queensSlice";
 import List from "../../components/List/List";
 import useApi from "../../hooks/useApi/useApi";
+import Pagination from "../../components/Pagination/Pagination";
 
 const ListPage = (): React.ReactElement => {
   const { queens } = useAppSelector((state) => state.queens);
@@ -35,6 +36,7 @@ const ListPage = (): React.ReactElement => {
     <ListPageStyled>
       <h1>Drag Queens</h1>
       <List queens={queens}></List>
+      <Pagination />
     </ListPageStyled>
   );
 };

@@ -19,6 +19,7 @@ const buttonData: buttonDataStructure = {
     back: "back",
     add: "add",
     login: "login",
+    loadmore: "loadmore",
   },
   buttonClassName: {
     delete: "delete",

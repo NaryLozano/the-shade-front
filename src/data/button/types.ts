@@ -26,6 +26,7 @@ interface buttonDataStructure {
     back: string;
     add: string;
     login: string;
+    loadmore: string;
   };
   buttonClassName: {
     modify: string;
