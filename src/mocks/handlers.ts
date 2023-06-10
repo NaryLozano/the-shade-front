@@ -16,6 +16,10 @@ export const handlers = [
   rest.delete(`${apiUrl}${paths.queens}/${queenMock.id}`, (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json("Queen deleted!"));
   }),
+
+  rest.post(`${apiUrl}${paths.queens}${paths.add}`, (_req, res, ctx) => {
+    return res(ctx.status(201), ctx.json({ queenMock }));
+  }),
 ];
 
 export const errorHandlers = [

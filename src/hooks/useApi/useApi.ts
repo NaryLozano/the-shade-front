@@ -90,7 +90,7 @@ const useApi = () => {
 
       dispatch(hideLoadingActionCreator());
       return newQueen;
-    } catch {
+    } catch (error: unknown) {
       dispatch(hideLoadingActionCreator());
       dispatch(
         showModalActionCreator({

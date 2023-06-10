@@ -9,7 +9,7 @@ import {
 } from "./lazyComponents/lazyComponents";
 import paths from "./paths/paths";
 
-const { login, home, root } = paths;
+const { login, home, root, add, notFound } = paths;
 export const routes: RouteObject[] = [
   {
     path: root,
@@ -33,7 +33,7 @@ export const routes: RouteObject[] = [
         ),
       },
       {
-        path: paths.notFound,
+        path: notFound,
         element: (
           <Suspense>
             <LazyNotFound />
@@ -41,7 +41,7 @@ export const routes: RouteObject[] = [
         ),
       },
       {
-        path: paths.add,
+        path: add,
         element: (
           <Suspense>
             <LazyAdd />
