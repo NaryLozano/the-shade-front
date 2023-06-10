@@ -1,14 +1,14 @@
-import { QueenStructure } from "../../store/queens/types";
 import CardStyled from "./CardStyled";
 import Button from "../Button/Button";
 import buttonData from "../../data/button/buttonData";
 import useApi from "../../hooks/useApi/useApi";
+import { QueenStructure } from "../../store/queens/types";
 
 interface CardProps {
   queen: QueenStructure;
 }
 const Card = ({
-  queen: { id, hometown, rank, image, name },
+  queen: { hometown, id, image, name, rank },
 }: CardProps): React.ReactElement => {
   const { buttonA11Y, buttonClassName, buttonPicture } = buttonData;
   const { deleteQueen } = useApi();

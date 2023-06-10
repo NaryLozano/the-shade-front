@@ -75,15 +75,18 @@ const useApi = () => {
     }
   };
 
-  const addQueen = async (queenToAdd: QueenStructure) => {
+  const addQueen = async (
+    queenData: QueenStructure
+  ): Promise<QueenStructure> => {
     try {
       dispatch(showLoadingActionCreator());
-      const {
-        data: { queen },
-      } = await axios.post(`${paths.queens}${paths.add}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        queenToAdd,
-      });
+      const { data: newQueen } = await axios.post<QueenStructure>(
+        `${apiUrl}${paths.queens}${paths.add}`,
+        queenData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       dispatch(
         showModalActionCreator({
           modalData: {
@@ -93,7 +96,8 @@ const useApi = () => {
           },
         })
       );
-      return queen;
+      dispatch(hideLoadingActionCreator());
+      return newQueen;
     } catch {
       dispatch(hideLoadingActionCreator());
       dispatch(

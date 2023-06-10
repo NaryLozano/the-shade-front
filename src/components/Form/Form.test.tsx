@@ -9,7 +9,7 @@ describe("Given a Form component", () => {
     test("Then it should show an input field with an accesible name 'name'", () => {
       const expectedAccesibleName = "name";
 
-      renderWithProviders(wrapWithRouter(<Form submitForm={() => ({})} />));
+      renderWithProviders(wrapWithRouter(<Form onSubmit={() => ({})} />));
 
       const input = screen.getByRole("textbox", {
         name: expectedAccesibleName,
@@ -25,7 +25,7 @@ describe("Given an onChange function", () => {
     test("Then it should show the user input", async () => {
       const expectedAccessibleName = "hometown";
 
-      renderWithProviders(wrapWithRouter(<Form submitForm={() => ({})} />));
+      renderWithProviders(wrapWithRouter(<Form onSubmit={() => ({})} />));
 
       const inputArea = screen.getByRole("textbox", {
         name: expectedAccessibleName,
@@ -33,7 +33,7 @@ describe("Given an onChange function", () => {
 
       const queen = getQueenMockData();
 
-      await userEvent.type(inputArea, queen.hometown);
+      await userEvent.type(inputArea, queen.hometown as string);
 
       expect(inputArea).toHaveValue(queen.hometown);
     });

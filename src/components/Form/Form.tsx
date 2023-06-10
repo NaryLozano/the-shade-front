@@ -2,35 +2,41 @@ import React, { useState } from "react";
 import buttonData from "../../data/button/buttonData";
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
-
-const formState = {
-  name: "",
-  age: "",
-  season: "",
-  rank: "",
-  hometown: "",
-  quote: "",
-  pictureUrl: "",
-};
+import { QueenStructure } from "../../store/queens/types";
 
 interface FormProps {
-  submitForm: () => void;
+  onSubmit: (queenData: QueenStructure) => void;
 }
-const Form = ({ submitForm }: FormProps): React.ReactElement => {
-  const [formData, setFormdata] = useState(formState);
+const Form = ({ onSubmit }: FormProps): React.ReactElement => {
+  const formState = {
+    name: "",
+    age: 0,
+    season: 0,
+    rank: 0,
+    hometown: "",
+    quote: "",
+    image: "",
+  };
+  const [queenData, setQueenData] = useState(formState);
   const { buttonA11Y, buttonClassName, content } = buttonData;
 
   const onChangeForm = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormdata({
-      ...formData,
+    setQueenData({
+      ...queenData,
       [event.target.id]: event.target.value,
     });
   };
 
+  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit(queenData);
+    setQueenData(formState);
+  };
+
   return (
-    <FormStyled className="formulary" onSubmit={submitForm}>
+    <FormStyled className="formulary" onSubmit={handleOnSubmit}>
       <label htmlFor="name" className="formulary">
         name
         <input
@@ -38,7 +44,7 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
           type="text"
           id="name"
           placeholder="mama ru"
-          value={formData.name}
+          value={queenData.name}
           onChange={onChangeForm}
           required={true}
         />
@@ -50,7 +56,7 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
           className="formulary__input"
           id="age"
           placeholder="35"
-          value={formData.age}
+          value={queenData.age}
           onChange={onChangeForm}
           required={true}
         />
@@ -62,7 +68,7 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
           type="number"
           id="season"
           placeholder="1"
-          value={formData.season}
+          value={queenData.season}
           onChange={onChangeForm}
           required={true}
         />
@@ -74,7 +80,7 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
           type="text"
           id="rank"
           placeholder="5th"
-          value={formData.rank}
+          value={queenData.rank}
           onChange={onChangeForm}
           required={true}
         />
@@ -86,7 +92,7 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
           type="text"
           id="hometown"
           placeholder="barcelona,cat"
-          value={formData.hometown}
+          value={queenData.hometown}
           onChange={onChangeForm}
           required={true}
         />
@@ -97,17 +103,17 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
           className="formulary__area"
           id="quote"
           placeholder="'no t, no shade, no pink lemonade'"
-          value={formData.quote}
+          value={queenData.quote}
           onChange={onChangeForm}
           required={true}
         />
       </label>
-      <label htmlFor="picture" className="formulary">
+      <label htmlFor="image" className="formulary">
         picture url
         <textarea
           className="formulary__area"
-          id="pictureUrl"
-          value={formData.pictureUrl}
+          id="image"
+          value={queenData.image}
           onChange={onChangeForm}
           required={true}
         />
@@ -116,7 +122,6 @@ const Form = ({ submitForm }: FormProps): React.ReactElement => {
         buttonClassName={buttonClassName.primary.dark}
         buttonA11Y={buttonA11Y.add}
         text={content?.add}
-        actionOnClick={submitForm}
       />
     </FormStyled>
   );
