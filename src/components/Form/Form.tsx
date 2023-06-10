@@ -2,30 +2,41 @@ import React, { useState } from "react";
 import buttonData from "../../data/button/buttonData";
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
+import { QueenStructure } from "../../store/queens/types";
 
-const formState = {
-  name: "",
-  age: 35,
-  season: 1,
-  rank: "",
-  hometown: "",
-  quote: "",
-  pictureUrl: "",
-};
-const Form = (): React.ReactElement => {
-  const [formData, setFormdata] = useState(formState);
+interface FormProps {
+  onSubmit: (queenData: QueenStructure) => void;
+}
+const Form = ({ onSubmit }: FormProps): React.ReactElement => {
+  const formState = {
+    name: "",
+    age: 0,
+    season: 0,
+    rank: 0,
+    hometown: "",
+    quote: "",
+    image: "",
+  };
+  const [queenData, setQueenData] = useState(formState);
   const { buttonA11Y, buttonClassName, content } = buttonData;
 
   const onChangeForm = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormdata({
-      ...formData,
+    setQueenData({
+      ...queenData,
       [event.target.id]: event.target.value,
     });
   };
+
+  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit(queenData);
+    setQueenData(formState);
+  };
+
   return (
-    <FormStyled className="formulary">
+    <FormStyled className="formulary" onSubmit={handleOnSubmit}>
       <label htmlFor="name" className="formulary">
         name
         <input
@@ -33,30 +44,33 @@ const Form = (): React.ReactElement => {
           type="text"
           id="name"
           placeholder="mama ru"
-          value={formData.name}
+          value={queenData.name}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="age" className="formulary">
         age
         <input
-          type="text"
+          type="number"
           className="formulary__input"
           id="age"
           placeholder="35"
-          value={formData.age}
+          value={queenData.age}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="season" className="formulary">
         season
         <input
           className="formulary__input"
-          type="text"
+          type="number"
           id="season"
           placeholder="1"
-          value={formData.season}
+          value={queenData.season}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="rank" className="formulary">
@@ -66,8 +80,9 @@ const Form = (): React.ReactElement => {
           type="text"
           id="rank"
           placeholder="5th"
-          value={formData.rank}
+          value={queenData.rank}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="hometown" className="formulary">
@@ -77,8 +92,9 @@ const Form = (): React.ReactElement => {
           type="text"
           id="hometown"
           placeholder="barcelona,cat"
-          value={formData.hometown}
+          value={queenData.hometown}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <label htmlFor="quote" className="formulary">
@@ -87,18 +103,19 @@ const Form = (): React.ReactElement => {
           className="formulary__area"
           id="quote"
           placeholder="'no t, no shade, no pink lemonade'"
-          value={formData.quote}
+          value={queenData.quote}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
-      <label htmlFor="picture" className="formulary">
+      <label htmlFor="image" className="formulary">
         picture url
         <textarea
           className="formulary__area"
-          id="picture"
-          placeholder="https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e3/Ru_in_drag.jpg/revision/latest/scale-to-width-down/1000?cb=20190725062231"
-          value={formData.pictureUrl}
+          id="image"
+          value={queenData.image}
           onChange={onChangeForm}
+          required={true}
         />
       </label>
       <Button

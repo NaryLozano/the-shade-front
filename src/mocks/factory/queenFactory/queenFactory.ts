@@ -9,7 +9,7 @@ const queenFactory = Factory.define<QueenStructure>(() => ({
   image: faker.image.url(),
   rank: faker.number.int({ min: 0, max: 16 }),
   season: faker.number.int({ min: 0, max: 16 }),
-  memorableQuote: faker.person.bio(),
+  quote: faker.person.bio(),
   id: faker.database.mongodbObjectId(),
 }));
 

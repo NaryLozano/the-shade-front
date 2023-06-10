@@ -12,6 +12,7 @@ import { expect } from "vitest";
 import { userMockCredentials } from "../../mocks/mocks";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import Layout from "../../components/Layout/Layout";
 
 const expectedAriaLabelText = "username";
 const expectedPlaceHolderText = "password";
@@ -31,7 +32,7 @@ describe("Given a LoginPage page", () => {
     test("Then it should redirect to home page", async () => {
       const routes: RouteObject[] = [
         { path: paths.root, element: <LoginPage /> },
-        { path: paths.home },
+        { path: paths.home, element: <Layout /> },
       ];
 
       const routerLogin = createMemoryRouter(routes);
@@ -62,7 +63,7 @@ describe("Given a LoginPage page", () => {
 
       const routes: RouteObject[] = [
         { path: paths.root, element: <LoginPage /> },
-        { path: paths.login },
+        { path: paths.login, element: <Layout /> },
       ];
 
       const routerLogin = createMemoryRouter(routes);
