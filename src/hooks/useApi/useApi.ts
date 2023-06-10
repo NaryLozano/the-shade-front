@@ -87,15 +87,7 @@ const useApi = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      dispatch(
-        showModalActionCreator({
-          modalData: {
-            isSuccess: true,
-            showFeedback: true,
-            modalMessage: messages.addOk,
-          },
-        })
-      );
+
       dispatch(hideLoadingActionCreator());
       return newQueen;
     } catch {
