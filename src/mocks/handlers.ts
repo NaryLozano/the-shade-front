@@ -10,7 +10,10 @@ export const handlers = [
   }),
 
   rest.get(`${apiUrl}${paths.queens}`, (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({ queens: queensMock }));
+    return res(
+      ctx.status(200),
+      ctx.json({ queens: queensMock, total: queensMock.length })
+    );
   }),
 
   rest.delete(`${apiUrl}${paths.queens}/${queenMock.id}`, (_req, res, ctx) => {
