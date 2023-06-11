@@ -30,6 +30,7 @@ const Modal = (): React.ReactElement => {
           buttonA11Y={buttonA11Y.back}
           text={content?.back}
           buttonClassName={buttonClassName.primary.light}
+          isDissabled={false}
         />
       </article>
     </ModalStyled>
