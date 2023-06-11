@@ -48,6 +48,18 @@ const ButtonStyled = styled.button.attrs((props) => ({
     height: 3rem;
     margin-bottom: 0;
   }
+
+  &.pagination {
+    border-radius: 3.125rem;
+    background-color: ${(prop) => prop.theme.colors.mediumLight};
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 0;
+  }
+
+  &.pagination:disabled {
+    visibility: hidden;
+  }
 `;
 
 export default ButtonStyled;

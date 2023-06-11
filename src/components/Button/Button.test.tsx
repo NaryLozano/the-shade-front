@@ -36,7 +36,7 @@ describe("Given a Button component", () => {
             actionOnClick={() => ({})}
             buttonA11Y="delete"
             buttonImage={{
-              width: buttonPicture?.delete.widht,
+              width: buttonPicture?.delete.width,
               height: buttonPicture?.delete.height,
               img: buttonPicture?.delete.deleteImg,
             }}
