@@ -9,6 +9,7 @@ interface ButtonProps {
   buttonClassName: string;
   text?: string;
   actionOnClick?: () => void;
+  isDissabled?: boolean;
 }
 const Button = ({
   buttonImage,
@@ -16,9 +17,14 @@ const Button = ({
   buttonClassName,
   text,
   actionOnClick,
+  isDissabled,
 }: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled className={buttonClassName} onClick={actionOnClick}>
+    <ButtonStyled
+      className={buttonClassName}
+      onClick={actionOnClick}
+      disabled={isDissabled}
+    >
       {buttonImage ? (
         <img
           src={buttonImage.img}

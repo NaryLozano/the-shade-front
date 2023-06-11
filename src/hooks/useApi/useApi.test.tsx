@@ -8,7 +8,7 @@ import { wrapper } from "../../utils/testUtils";
 describe("Given a getQueens function", () => {
   describe("When its called", () => {
     test("Then it should return a list of queens", async () => {
-      const expectedQueens = queensMock;
+      const expectedQueens = { queens: queensMock, total: queensMock.length };
 
       const {
         result: {
@@ -16,24 +16,25 @@ describe("Given a getQueens function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapper });
 
-      const queensList = await getQueens();
+      const queensList = await getQueens(0, 5);
 
       expect(queensList).toStrictEqual(expectedQueens);
     });
   });
 
   describe("When its called and rejects", () => {
-    test("Then it should dispatch a showModalActionCreator", async () => {
+    test("Then it should dispatch a showModalActionCreator", () => {
       server.resetHandlers(...errorHandlers);
+      const error = new Error("bring back my queens has failed");
       const {
         result: {
           current: { getQueens },
         },
       } = renderHook(() => useApi(), { wrapper: wrapper });
 
-      const notQueens = await getQueens();
+      const notQueens = getQueens(0, 0);
 
-      expect(notQueens).toBeUndefined();
+      expect(notQueens).rejects.toThrowError(error);
     });
   });
 });

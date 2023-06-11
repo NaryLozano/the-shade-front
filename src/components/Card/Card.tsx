@@ -45,7 +45,7 @@ const Card = ({
         />
         <Button
           buttonImage={{
-            width: buttonPicture?.delete.widht,
+            width: buttonPicture?.delete.width,
             height: buttonPicture?.delete.height,
             img: buttonPicture?.delete.deleteImg,
           }}

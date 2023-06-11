@@ -1,11 +1,9 @@
-import { QueenStructure } from "../../store/queens/types";
+import { useAppSelector } from "../../store";
 import Card from "../Card/Card";
 import ListStyled from "./ListStyled";
-interface ListProps {
-  queens: QueenStructure[];
-}
 
-const List = ({ queens }: ListProps): React.ReactElement => {
+const List = (): React.ReactElement => {
+  const { queens } = useAppSelector((state) => state.queens);
   return (
     <ListStyled>
       {queens.map((queen) => (

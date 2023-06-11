@@ -7,7 +7,17 @@ interface buttonDataStructure {
     };
     delete: {
       deleteImg: string;
-      widht: string;
+      width: string;
+      height: string;
+    };
+    paginationNext: {
+      img: string;
+      width: string;
+      height: string;
+    };
+    paginationPrev: {
+      img: string;
+      width: string;
       height: string;
     };
   };
@@ -17,6 +27,8 @@ interface buttonDataStructure {
     loadmore: string;
     add: string;
     modify: string;
+    previous: string;
+    next: string;
   };
   buttonA11Y: {
     next: string;
@@ -26,10 +38,12 @@ interface buttonDataStructure {
     back: string;
     add: string;
     login: string;
+    loadmore: string;
   };
   buttonClassName: {
     modify: string;
     delete: string;
+    pagination: string;
     primary: {
       dark: string;
       light: string;

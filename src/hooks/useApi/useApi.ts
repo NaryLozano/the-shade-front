@@ -19,31 +19,41 @@ const useApi = () => {
 
   const dispatch = useAppDispatch();
 
-  const getQueens = useCallback(async () => {
-    try {
-      dispatch(showLoadingActionCreator());
+  const getQueens = useCallback(
+    async (
+      limit: number,
+      skip: number
+    ): Promise<{ queens: QueenStructure[]; total: number }> => {
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const {
-        data: { queens },
-      } = await axios.get(`${apiUrl}${paths.queens}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(hideLoadingActionCreator());
+        const {
+          data: { queens, total },
+        } = await axios.get<{ queens: QueenStructure[]; total: number }>(
+          `${apiUrl}${paths.queens}?limit=${limit}&skip=${skip}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        dispatch(hideLoadingActionCreator());
 
-      return queens;
-    } catch {
-      dispatch(hideLoadingActionCreator());
+        return { queens, total };
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
 
-      dispatch(
-        showModalActionCreator({
-          modalData: {
-            isSuccess: false,
-            modalMessage: messages.failed,
-          },
-        })
-      );
-    }
-  }, [dispatch, token]);
+        dispatch(
+          showModalActionCreator({
+            modalData: {
+              isSuccess: false,
+              modalMessage: messages.failed,
+            },
+          })
+        );
+        throw new Error("bring back my queens has failed");
+      }
+    },
+    [dispatch, token]
+  );
 
   const deleteQueen = async (id: string | undefined) => {
     try {
