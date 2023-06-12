@@ -9,14 +9,14 @@ describe("Given a getQueens function", () => {
   describe("When its called", () => {
     test("Then it should return a list of queens", async () => {
       const expectedQueens = { queens: queensMock, total: queensMock.length };
-
+      const params = { limit: 0, skip: 5 };
       const {
         result: {
           current: { getQueens },
         },
       } = renderHook(() => useApi(), { wrapper: wrapper });
 
-      const queensList = await getQueens(0, 5);
+      const queensList = await getQueens(params);
 
       expect(queensList).toStrictEqual(expectedQueens);
     });
@@ -26,13 +26,14 @@ describe("Given a getQueens function", () => {
     test("Then it should dispatch a showModalActionCreator", () => {
       server.resetHandlers(...errorHandlers);
       const error = new Error("bring back my queens has failed");
+      const params = { limit: 0, skip: 0 };
       const {
         result: {
           current: { getQueens },
         },
       } = renderHook(() => useApi(), { wrapper: wrapper });
 
-      const notQueens = getQueens(0, 0);
+      const notQueens = getQueens(params);
 
       expect(notQueens).rejects.toThrowError(error);
     });
