@@ -33,7 +33,7 @@ export const errorHandlers = [
     return res(ctx.status(401));
   }),
 
-  rest.delete(`${apiUrl}${paths.queens}/${queenMock.id}`, (_req, res, ctx) => {
+  rest.delete(`${apiUrl}${paths.queens}/:idQueen`, (_req, res, ctx) => {
     return res(ctx.status(404));
   }),
 ];

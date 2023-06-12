@@ -78,7 +78,6 @@ const useApi = () => {
             modalData: { isSuccess: false, modalMessage: messages.deleteFail },
           })
         );
-      throw new Error(messages.deleteFail);
     }
   };
 
