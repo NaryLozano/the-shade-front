@@ -12,13 +12,20 @@ describe("Given an userReducer", () => {
     test("Then it should return the new state a list with 2 queens", () => {
       const initialQueensState: QueenStructure[] = [];
 
-      const currentState: QueensState = { queens: initialQueensState };
+      const currentState: QueensState = {
+        queens: initialQueensState,
+        total: initialQueensState.length,
+      };
 
-      const queens = loadQueensActionCreator(queensMock);
+      const queens = loadQueensActionCreator({
+        queens: queensMock,
+        total: queensMock.length,
+      });
 
       const expectedNewQueensState: QueensState = {
         ...initialQueensState,
         queens: queensMock,
+        total: queensMock.length,
       };
 
       const newState: QueensState = queenReducer(currentState, queens);

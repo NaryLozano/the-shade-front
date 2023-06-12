@@ -12,5 +12,5 @@ export interface QueenStructure {
 
 export interface QueensState {
   queens: QueenStructure[];
-  pack?: number;
+  total?: number;
 }
