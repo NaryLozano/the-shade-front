@@ -15,7 +15,12 @@ const Filter = ({
 
   return (
     <div className="filter-container">
-      <FilterStyled name="season" id="season" onChange={onChangeSelect}>
+      <FilterStyled
+        name="season"
+        id="season"
+        onChange={onChangeSelect}
+        aria-label="season"
+      >
         <option value="">season</option>
         <option value="1">season 1</option>
         <option value="2">season 2</option>

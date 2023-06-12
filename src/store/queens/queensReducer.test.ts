@@ -1,4 +1,4 @@
-import { queenMock4, queensMock } from "../../mocks/queensMocks";
+import { queenMock, queensMock } from "../../mocks/queensMocks";
 import {
   addQueenActionCreator,
   deleteQueenActionCreator,
@@ -63,10 +63,10 @@ describe("Given an userReducer", () => {
 
       const expectedNewState: QueensState = {
         ...currentState,
-        queens: [...currentState.queens, queenMock4],
+        queens: [...currentState.queens, queenMock[0]],
       };
 
-      const addQueen = addQueenActionCreator(queenMock4);
+      const addQueen = addQueenActionCreator(queenMock[0]);
 
       const newState = queenReducer(currentState, addQueen);
 
