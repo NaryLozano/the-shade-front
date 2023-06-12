@@ -1,9 +1,19 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, screen } from "@testing-library/react";
 import { queenMock, queensMock } from "../../mocks/queensMocks";
 import useApi from "./useApi";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
-import { wrapper } from "../../utils/testUtils";
+import {
+  renderWithProviders,
+  wrapWithProviders,
+  wrapper,
+} from "../../utils/testUtils";
+import Layout from "../../components/Layout/Layout";
+import {
+  RouteObject,
+  RouterProvider,
+  createMemoryRouter,
+} from "react-router-dom";
 
 describe("Given a getQueens function", () => {
   describe("When its called", () => {
@@ -42,34 +52,69 @@ describe("Given a getQueens function", () => {
 
 describe("Given a delete queen function ", () => {
   const queenToDelete = queenMock.id;
-  describe("When its called with a queen id", () => {
-    test("Then it should delete the queen with the id passed", async () => {
-      const statusCode = 200;
+  const routes: RouteObject[] = [
+    {
+      path: "/",
+      element: <Layout />,
+    },
+  ];
+  const modalRoute = createMemoryRouter(routes);
 
+  describe("When its called with a queen id", () => {
+    test("Then it should delete the queen with the id passed and show a success modal", async () => {
       const {
         result: {
           current: { deleteQueen },
         },
-      } = renderHook(() => useApi(), { wrapper: wrapper });
+      } = renderHook(() => useApi(), { wrapper: wrapWithProviders });
 
-      const result = await deleteQueen(queenToDelete);
+      await deleteQueen(queenToDelete);
+      renderWithProviders(<RouterProvider router={modalRoute} />);
 
-      expect(result).toBe(statusCode);
+      const modal = screen.getByRole("heading", { level: 2, name: "yaas!" });
+
+      expect(modal).toBeInTheDocument();
     });
   });
+
   describe("When its called with a queen id and the id doesnt exist", () => {
     test("Then it should return a modal with the message 'queen could't be deleted try again, please'", async () => {
       server.resetHandlers(...errorHandlers);
+
       const queenToDeleteFail = queenMock.id;
       const {
         result: {
           current: { deleteQueen },
         },
-      } = renderHook(() => useApi(), { wrapper: wrapper });
+      } = renderHook(() => useApi(), { wrapper: wrapWithProviders });
+      const routes: RouteObject[] = [
+        {
+          path: "/",
+          element: <Layout />,
+        },
+      ];
+      const modalRoute = createMemoryRouter(routes);
 
-      const notResult = await deleteQueen(queenToDeleteFail);
+      renderWithProviders(
+        <RouterProvider router={modalRoute}></RouterProvider>,
+        {
+          ui: {
+            modalData: {
+              isSuccess: false,
+              modalMessage: "asd",
+              showFeedback: true,
+            },
+          },
+        }
+      );
+      await deleteQueen(queenToDeleteFail);
 
-      expect(notResult).toBeUndefined();
+      const modal = await screen.getByRole("heading", {
+        level: 2,
+        name: "oops!",
+      });
+
+      expect(modal).toBeInTheDocument();
     });
   });
 });
