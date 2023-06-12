@@ -62,7 +62,7 @@ const ListPage = (): React.ReactElement => {
 
   return (
     <ListPageStyled>
-      <Filter setFilterValue={setFilterValue} />
+      <Filter setFilterValue={setFilterValue} setSkip={setSkip} />
       <h1>Drag Queens</h1>
       <List></List>
       <Pagination

@@ -2,10 +2,15 @@ import FilterStyled from "./FilterStyled";
 
 interface FilterProps {
   setFilterValue: (filterValue: string) => void;
+  setSkip: (skipValue: number) => void;
 }
-const Filter = ({ setFilterValue }: FilterProps): React.ReactElement => {
+const Filter = ({
+  setFilterValue,
+  setSkip,
+}: FilterProps): React.ReactElement => {
   const onChangeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilterValue(event.target.value);
+    setSkip(0);
   };
 
   return (
