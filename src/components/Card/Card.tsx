@@ -17,7 +17,6 @@ const Card = ({
 
   const handleDelete = async () => {
     await deleteQueen(id);
-
     dispatch(deleteQueenActionCreator(id));
   };
 
