@@ -5,6 +5,7 @@ import { loadQueensActionCreator } from "../../store/queens/queensSlice";
 import List from "../../components/List/List";
 import useApi from "../../hooks/useApi/useApi";
 import Pagination from "../../components/Pagination/Pagination";
+import Filter from "../../components/Filter/Filter";
 
 const ListPage = (): React.ReactElement => {
   const { getQueens } = useApi();
@@ -13,13 +14,27 @@ const ListPage = (): React.ReactElement => {
 
   const [skip, setSkip] = useState(0);
   const [totalQueens, setTotalQueens] = useState(0);
+  const [filterValue, setFilterValue] = useState("");
+
   const limit = 5;
+
   useEffect(() => {
     (async () => {
-      const { queens, total } = await getQueens(limit, skip);
+      const params = filterValue
+        ? {
+            limit: limit,
+            skip: skip,
+            filter: "season",
+            filterValue: filterValue,
+          }
+        : {
+            limit: limit,
+            skip: skip,
+          };
+      const { queens, total } = await getQueens({ ...params });
 
       if (queens) {
-        dispatch(loadQueensActionCreator(queens));
+        dispatch(loadQueensActionCreator({ queens, total }));
         setTotalQueens(total);
 
         const firstImages = [queens[0].image, queens[1].image, queens[2].image];
@@ -36,7 +51,7 @@ const ListPage = (): React.ReactElement => {
         headDocument.insertBefore(preload, firstElement);
       }
     })();
-  }, [dispatch, getQueens, skip, totalQueens]);
+  }, [dispatch, filterValue, getQueens, skip]);
 
   const previousQueens = () => {
     setSkip(skip - limit);
@@ -47,6 +62,7 @@ const ListPage = (): React.ReactElement => {
 
   return (
     <ListPageStyled>
+      <Filter setFilterValue={setFilterValue} setSkip={setSkip} />
       <h1>Drag Queens</h1>
       <List></List>
       <Pagination

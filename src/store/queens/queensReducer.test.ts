@@ -1,4 +1,4 @@
-import { queenMock4, queensMock } from "../../mocks/queensMocks";
+import { queenMock, queensMock } from "../../mocks/queensMocks";
 import {
   addQueenActionCreator,
   deleteQueenActionCreator,
@@ -12,13 +12,20 @@ describe("Given an userReducer", () => {
     test("Then it should return the new state a list with 2 queens", () => {
       const initialQueensState: QueenStructure[] = [];
 
-      const currentState: QueensState = { queens: initialQueensState };
+      const currentState: QueensState = {
+        queens: initialQueensState,
+        total: initialQueensState.length,
+      };
 
-      const queens = loadQueensActionCreator(queensMock);
+      const queens = loadQueensActionCreator({
+        queens: queensMock,
+        total: queensMock.length,
+      });
 
       const expectedNewQueensState: QueensState = {
         ...initialQueensState,
         queens: queensMock,
+        total: queensMock.length,
       };
 
       const newState: QueensState = queenReducer(currentState, queens);
@@ -56,10 +63,10 @@ describe("Given an userReducer", () => {
 
       const expectedNewState: QueensState = {
         ...currentState,
-        queens: [...currentState.queens, queenMock4],
+        queens: [...currentState.queens, queenMock[0]],
       };
 
-      const addQueen = addQueenActionCreator(queenMock4);
+      const addQueen = addQueenActionCreator(queenMock[0]);
 
       const newState = queenReducer(currentState, addQueen);
 

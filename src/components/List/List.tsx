@@ -6,6 +6,7 @@ const List = (): React.ReactElement => {
   const { queens } = useAppSelector((state) => state.queens);
   return (
     <ListStyled>
+      {queens.length === 0 && <p>no results found</p>}
       {queens.map((queen) => (
         <li className="queen" key={queen.id}>
           <Card queen={queen} />

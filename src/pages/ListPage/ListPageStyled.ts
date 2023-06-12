@@ -9,5 +9,8 @@ const ListPageStyled = styled.main`
   h1 {
     margin-bottom: 2.188rem;
   }
+  .filter-container {
+    margin: 1.25rem;
+  }
 `;
 export default ListPageStyled;

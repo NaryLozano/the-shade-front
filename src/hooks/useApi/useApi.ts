@@ -18,18 +18,32 @@ const useApi = () => {
 
   const dispatch = useAppDispatch();
 
+  interface params {
+    limit: number;
+    skip: number;
+    filter?: string;
+    filterValue?: string;
+  }
   const getQueens = useCallback(
-    async (
-      limit: number,
-      skip: number
-    ): Promise<{ queens: QueenStructure[]; total: number }> => {
+    async ({
+      limit,
+      skip,
+      filter,
+      filterValue,
+    }: params): Promise<{
+      queens: QueenStructure[];
+      total: number;
+    }> => {
       try {
         dispatch(showLoadingActionCreator());
-
+        let url = `${apiUrl}${paths.queens}?limit=${limit}&skip=${skip}`;
+        if (filter) {
+          url += `&filter=${filter}&filterValue=${filterValue}`;
+        }
         const {
           data: { queens, total },
         } = await axios.get<{ queens: QueenStructure[]; total: number }>(
-          `${apiUrl}${paths.queens}?limit=${limit}&skip=${skip}`,
+          `${url}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

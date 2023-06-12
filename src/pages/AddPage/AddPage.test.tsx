@@ -42,13 +42,13 @@ describe("Given an AddPAge page", () => {
       const image = screen.getByRole("textbox", { name: "picture url" });
       const button = screen.getByRole("button", { name: "add queen" });
 
-      await userEvent.type(name, queenMock.name);
-      await userEvent.type(age, queenMock.age.toString());
-      await userEvent.type(season, queenMock.season.toString());
-      await userEvent.type(rank, queenMock.rank.toString());
-      await userEvent.type(hometown, queenMock.hometown);
-      await userEvent.type(quote, queenMock.quote);
-      await userEvent.type(image, queenMock.image);
+      await userEvent.type(name, queenMock[0].name);
+      await userEvent.type(age, queenMock[0].age.toString());
+      await userEvent.type(season, queenMock[0].season.toString());
+      await userEvent.type(rank, queenMock[0].rank.toString());
+      await userEvent.type(hometown, queenMock[0].hometown);
+      await userEvent.type(quote, queenMock[0].quote);
+      await userEvent.type(image, queenMock[0].image);
       await userEvent.click(button);
 
       expect(routerAddPage.state.location.pathname).toBe(paths.home);

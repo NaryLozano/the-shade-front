@@ -3,6 +3,7 @@ import { QueenStructure, QueensState } from "./types";
 
 const InitialQueensState: QueensState = {
   queens: [],
+  total: 0,
 };
 
 export const queensSlice = createSlice({
@@ -12,8 +13,12 @@ export const queensSlice = createSlice({
   reducers: {
     loadQueens: (
       currentQueens,
-      action: PayloadAction<QueenStructure[]>
-    ): QueensState => ({ ...currentQueens, queens: [...action.payload] }),
+      action: PayloadAction<{ queens: QueenStructure[]; total: number }>
+    ): QueensState => ({
+      ...currentQueens,
+      queens: [...action.payload.queens],
+      total: action.payload.total,
+    }),
 
     deleteQueen: (
       currentQueens: QueensState,
