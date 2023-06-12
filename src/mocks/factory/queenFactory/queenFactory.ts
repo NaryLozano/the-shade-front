@@ -13,7 +13,7 @@ const queenFactory = Factory.define<QueenStructure>(() => ({
   id: faker.database.mongodbObjectId(),
 }));
 
-export const getQueenMockData = (data?: QueenStructure) => {
-  const queenData = queenFactory.build(data);
-  return queenData;
-};
+export const getQueenMockData = (
+  total: number,
+  data?: Partial<QueenStructure>
+) => queenFactory.buildList(total, data);

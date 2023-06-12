@@ -31,11 +31,11 @@ describe("Given an onChange function", () => {
         name: expectedAccessibleName,
       });
 
-      const queen = getQueenMockData();
+      const queen = getQueenMockData(1);
 
-      await userEvent.type(inputArea, queen.hometown as string);
+      await userEvent.type(inputArea, queen[0].hometown as string);
 
-      expect(inputArea).toHaveValue(queen.hometown);
+      expect(inputArea).toHaveValue(queen[0].hometown);
     });
   });
 });
