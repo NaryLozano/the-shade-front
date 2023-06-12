@@ -24,7 +24,7 @@ const LoginForm = ({ loginSubmit }: LoginProps): React.ReactElement => {
   };
 
   const isValidInput =
-    loginData.username.length > 3 && loginData.password.length > 3;
+    loginData.username.length > 1 && loginData.password.length > 1;
 
   return (
     <LoginFormStyled

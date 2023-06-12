@@ -18,14 +18,15 @@ const FormStyled = styled.form`
       font-size: ${(prop) => prop.theme.fontSizes.small};
       width: 17.5rem;
       height: 3.125rem;
-      border-bottom: 1px solid #000;
+      border-bottom: 0.063rem solid #000;
       font-weight: normal;
+      padding: 0.625rem;
     }
 
     &__area {
       padding-top: 0.625rem;
       width: 17.5rem;
-      border-bottom: 1px solid ${(prop) => prop.theme.colors.darkPrimary};
+      border-bottom: 0.063rem solid ${(prop) => prop.theme.colors.darkPrimary};
       font-weight: normal;
     }
   }

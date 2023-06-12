@@ -22,13 +22,13 @@ const ListPage = (): React.ReactElement => {
         dispatch(loadQueensActionCreator(queens));
         setTotalQueens(total);
 
-        const firstImage = queens[0].image;
+        const firstImages = [queens[0].image, queens[1].image, queens[2].image];
 
         const preload = await document.createElement("link");
 
         preload.rel = "preLoad";
         preload.as = "image";
-        preload.href = firstImage;
+        preload.href = firstImages.join(",");
 
         const headDocument = document.head;
         const firstElement = document.head.firstChild;

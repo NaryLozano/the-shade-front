@@ -3,7 +3,8 @@ import Button from "../Button/Button";
 import buttonData from "../../data/button/buttonData";
 import useApi from "../../hooks/useApi/useApi";
 import { QueenStructure } from "../../store/queens/types";
-
+import { useAppDispatch } from "../../store";
+import { deleteQueenActionCreator } from "../../store/queens/queensSlice";
 interface CardProps {
   queen: QueenStructure;
 }
@@ -12,9 +13,12 @@ const Card = ({
 }: CardProps): React.ReactElement => {
   const { buttonA11Y, buttonClassName, buttonPicture } = buttonData;
   const { deleteQueen } = useApi();
+  const dispatch = useAppDispatch();
 
-  const handleDelete = () => {
-    deleteQueen(id);
+  const handleDelete = async () => {
+    await deleteQueen(id);
+
+    dispatch(deleteQueenActionCreator(id));
   };
 
   return (
