@@ -9,7 +9,6 @@ import {
 } from "../../store/ui/uiSlice";
 import paths from "../../routers/paths/paths";
 import modalData from "../../data/modal/modalData";
-import { deleteQueenActionCreator } from "../../store/queens/queensSlice";
 import { QueenStructure } from "../../store/queens/types";
 
 const { messages } = modalData;
@@ -58,11 +57,9 @@ const useApi = () => {
   const deleteQueen = async (id: string | undefined) => {
     try {
       dispatch(showLoadingActionCreator());
-      const { status } = await axios.delete(`${apiUrl}${paths.queens}/${id}`, {
+      await axios.delete(`${apiUrl}${paths.queens}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      dispatch(deleteQueenActionCreator(id));
 
       dispatch(hideLoadingActionCreator());
       dispatch(
@@ -74,14 +71,14 @@ const useApi = () => {
           },
         })
       );
-      return status;
-    } catch {
+    } catch (error: unknown) {
       dispatch(hideLoadingActionCreator()),
         dispatch(
           showModalActionCreator({
             modalData: { isSuccess: false, modalMessage: messages.deleteFail },
           })
         );
+      throw new Error(messages.deleteFail);
     }
   };
 
@@ -110,7 +107,7 @@ const useApi = () => {
           },
         })
       );
-      throw messages.addFail;
+      throw new Error(messages.addFail);
     }
   };
   return { getQueens, deleteQueen, addQueen };
