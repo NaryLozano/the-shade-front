@@ -110,7 +110,7 @@ const Form = ({ onSubmit }: FormProps): React.ReactElement => {
       </label>
       <label htmlFor="image" className="formulary">
         picture url
-        <textarea
+        <input
           className="formulary__area"
           id="image"
           value={queenData.image}
