@@ -12,11 +12,11 @@ interface modalDataStructure {
   };
   modaltype: {
     error: string;
-    OK: string;
+    ok: string;
   };
   className: {
     error: string;
-    OK: string;
+    ok: string;
   };
 }
 

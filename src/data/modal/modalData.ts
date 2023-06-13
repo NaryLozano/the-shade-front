@@ -14,11 +14,11 @@ const modalData: modalDataStructure = {
   },
   modaltype: {
     error: "oops!",
-    OK: "yaas!",
+    ok: "yaas!",
   },
   className: {
     error: "modal__error",
-    OK: "modal__ok",
+    ok: "modal__ok",
   },
 };
 

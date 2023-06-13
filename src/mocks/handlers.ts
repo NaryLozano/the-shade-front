@@ -35,6 +35,10 @@ export const getHandlers = [
       ctx.json({ queens: season1QueensMock, total: season1QueensMock.length })
     );
   }),
+
+  rest.get(`${apiUrl}${paths.queens}/${queenMock[0].id}`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(queenMock[0]));
+  }),
 ];
 
 export const errorHandlers = [
