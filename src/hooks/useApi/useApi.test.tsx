@@ -136,3 +136,22 @@ describe("Given a delete queen function ", () => {
     });
   });
 });
+
+describe("Given a loadSelectedQueen function", () => {
+  describe("When its called with a queen id", () => {
+    test("Then it should return a queen that match the id", async () => {
+      server.resetHandlers(...getHandlers);
+      const expectedQueen = queenMock[0];
+
+      const {
+        result: {
+          current: { loadSelectedQueen },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapper });
+
+      const queen = await loadSelectedQueen(queenMock[0].id);
+
+      expect(queen).toStrictEqual(expectedQueen);
+    });
+  });
+});

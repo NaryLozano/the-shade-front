@@ -123,7 +123,33 @@ const useApi = () => {
       throw new Error(messages.addFail);
     }
   };
-  return { getQueens, deleteQueen, addQueen };
+
+  const loadSelectedQueen = async (
+    id: string | undefined
+  ): Promise<QueenStructure> => {
+    try {
+      dispatch(showLoadingActionCreator());
+      const response = await axios.get<QueenStructure>(
+        `${apiUrl}${paths.queens}/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      dispatch(hideLoadingActionCreator());
+
+      return response.data;
+    } catch (error: unknown) {
+      dispatch(hideLoadingActionCreator()),
+        dispatch(
+          showModalActionCreator({
+            modalData: { isSuccess: false, modalMessage: messages.failed },
+          })
+        );
+      throw new Error("bring back my queens has failed");
+    }
+  };
+  return { getQueens, deleteQueen, addQueen, loadSelectedQueen };
 };
 
 export default useApi;
