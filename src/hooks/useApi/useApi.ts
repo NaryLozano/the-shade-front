@@ -124,32 +124,35 @@ const useApi = () => {
     }
   };
 
-  const loadSelectedQueen = async (
-    id: string | undefined
-  ): Promise<QueenStructure> => {
-    try {
-      dispatch(showLoadingActionCreator());
-      const response = await axios.get<QueenStructure>(
-        `${apiUrl}${paths.queens}/${id}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      dispatch(hideLoadingActionCreator());
-
-      return response.data;
-    } catch (error: unknown) {
-      dispatch(hideLoadingActionCreator()),
-        dispatch(
-          showModalActionCreator({
-            modalData: { isSuccess: false, modalMessage: messages.failed },
-          })
+  const loadSelectedQueen = useCallback(
+    async (id: string | undefined): Promise<QueenStructure> => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const {
+          data: { queenById },
+        } = await axios.get<{ queenById: QueenStructure }>(
+          `${apiUrl}${paths.queens}/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
-      throw new Error("bring back my queens has failed");
-    }
-  };
-  return { getQueens, deleteQueen, addQueen, loadSelectedQueen };
-};
 
+        dispatch(hideLoadingActionCreator());
+
+        return queenById;
+      } catch (error: unknown) {
+        dispatch(hideLoadingActionCreator()),
+          dispatch(
+            showModalActionCreator({
+              modalData: { isSuccess: false, modalMessage: messages.failed },
+            })
+          );
+        throw new Error("bring back my queens has failed");
+      }
+    },
+    [dispatch, token]
+  );
+
+  return { addQueen, deleteQueen, getQueens, loadSelectedQueen };
+};
 export default useApi;

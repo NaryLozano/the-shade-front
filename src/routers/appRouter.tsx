@@ -3,6 +3,7 @@ import App from "../components/App/App";
 import { Suspense } from "react";
 import {
   LazyAdd,
+  LazyDetail,
   LazyList,
   LazyLogin,
   LazyNotFound,
@@ -45,6 +46,14 @@ export const routes: RouteObject[] = [
         element: (
           <Suspense>
             <LazyAdd />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${paths.queens}/:idQueen`,
+        element: (
+          <Suspense>
+            <LazyDetail />
           </Suspense>
         ),
       },

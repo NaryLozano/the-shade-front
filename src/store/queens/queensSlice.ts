@@ -4,7 +4,7 @@ import { QueenStructure, QueensState } from "./types";
 const InitialQueensState: QueensState = {
   queens: [],
   total: 0,
-  queen: {
+  queenById: {
     age: 0,
     hometown: "",
     image: "",
@@ -49,10 +49,10 @@ export const queensSlice = createSlice({
 
     loadSelectedQueen: (
       currentQueens: QueensState,
-      action: PayloadAction<string | undefined>
+      action: PayloadAction<QueenStructure>
     ): QueensState => ({
       ...currentQueens,
-      queen: currentQueens.queens.find((queen) => queen.id === action.payload),
+      queenById: action.payload,
     }),
   },
 });
