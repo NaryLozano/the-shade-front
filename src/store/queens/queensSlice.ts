@@ -4,6 +4,15 @@ import { QueenStructure, QueensState } from "./types";
 const InitialQueensState: QueensState = {
   queens: [],
   total: 0,
+  queen: {
+    age: 0,
+    hometown: "",
+    image: "",
+    name: "",
+    quote: "",
+    rank: 0,
+    season: 0,
+  },
 };
 
 export const queensSlice = createSlice({
@@ -37,6 +46,14 @@ export const queensSlice = createSlice({
       ...currentQueens,
       queens: [...currentQueens.queens, action.payload],
     }),
+
+    loadSelectedQueen: (
+      currentQueens: QueensState,
+      action: PayloadAction<string | undefined>
+    ): QueensState => ({
+      ...currentQueens,
+      queen: currentQueens.queens.find((queen) => queen.id === action.payload),
+    }),
   },
 });
 
@@ -44,6 +61,7 @@ export const {
   loadQueens: loadQueensActionCreator,
   deleteQueen: deleteQueenActionCreator,
   addQueen: addQueenActionCreator,
+  loadSelectedQueen: loadSelectedQueenActionCreator,
 } = queensSlice.actions;
 
 export const queenReducer = queensSlice.reducer;

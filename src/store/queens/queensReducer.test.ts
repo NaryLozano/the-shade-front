@@ -3,6 +3,7 @@ import {
   addQueenActionCreator,
   deleteQueenActionCreator,
   loadQueensActionCreator,
+  loadSelectedQueenActionCreator,
   queenReducer,
 } from "./queensSlice";
 import { QueenStructure, QueensState } from "./types";
@@ -71,6 +72,27 @@ describe("Given an userReducer", () => {
       const newState = queenReducer(currentState, addQueen);
 
       expect(newState).toStrictEqual(expectedNewState);
+    });
+  });
+
+  describe("When it receives a queen id and an loadSelectedQueen action", () => {
+    test("Then it should return the new state of with the queen selected", () => {
+      const queens = queensMock;
+      const queenById = queens.slice(1);
+      const currentState: QueensState = {
+        queens: queensMock,
+      };
+
+      const expectedNewQueensState: QueensState = {
+        queens: queensMock,
+        queen: queenById[0],
+      };
+
+      const selectedQueen = loadSelectedQueenActionCreator(queenById[0].id);
+
+      const newState = queenReducer(currentState, selectedQueen);
+
+      expect(newState).toStrictEqual(expectedNewQueensState);
     });
   });
 });
