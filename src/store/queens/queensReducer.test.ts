@@ -85,10 +85,10 @@ describe("Given an userReducer", () => {
 
       const expectedNewQueensState: QueensState = {
         queens: queensMock,
-        queen: queenById[0],
+        queenById: queenById[0],
       };
 
-      const selectedQueen = loadSelectedQueenActionCreator(queenById[0].id);
+      const selectedQueen = loadSelectedQueenActionCreator(queenById[0]);
 
       const newState = queenReducer(currentState, selectedQueen);
 

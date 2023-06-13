@@ -5,6 +5,9 @@ import useApi from "../../hooks/useApi/useApi";
 import { QueenStructure } from "../../store/queens/types";
 import { useAppDispatch } from "../../store";
 import { deleteQueenActionCreator } from "../../store/queens/queensSlice";
+import { useNavigate } from "react-router-dom";
+import paths from "../../routers/paths/paths";
+
 interface CardProps {
   queen: QueenStructure;
 }
@@ -14,15 +17,19 @@ const Card = ({
   const { buttonA11Y, buttonClassName, buttonPicture } = buttonData;
   const { deleteQueen } = useApi();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     await deleteQueen(id);
     dispatch(deleteQueenActionCreator(id));
   };
 
+  const goToDetails = () => {
+    navigate(`${paths.queens}/${id}`);
+  };
   return (
     <CardStyled className="card">
-      <button className="card__image-button">
+      <button className="card__image-button" onClick={goToDetails}>
         <img
           className="card__img"
           src={image}

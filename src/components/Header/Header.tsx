@@ -1,12 +1,13 @@
 import Navigation from "../Navigation/Navigation";
 import HeaderStyled from "./HeaderStyled";
+import logotype from "../../media/Logotype.svg";
 
 const Header = (): React.ReactElement => {
   return (
     <HeaderStyled>
       <img
         className="logotype"
-        src="./media/Logotype.svg"
+        src={logotype}
         alt="The Shade of it all with drawing of Sasha Velour"
         loading="lazy"
         width="4.375rem"
