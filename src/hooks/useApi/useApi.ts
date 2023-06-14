@@ -95,9 +95,7 @@ const useApi = () => {
     }
   };
 
-  const addQueen = async (
-    queenData: QueenStructure
-  ): Promise<QueenStructure> => {
+  const addQueen = async (queenData: QueenStructure) => {
     try {
       dispatch(showLoadingActionCreator());
       const { data: newQueen } = await axios.post<QueenStructure>(
@@ -110,7 +108,7 @@ const useApi = () => {
 
       dispatch(hideLoadingActionCreator());
       return newQueen;
-    } catch (error: unknown) {
+    } catch (error) {
       dispatch(hideLoadingActionCreator());
       dispatch(
         showModalActionCreator({
@@ -120,12 +118,11 @@ const useApi = () => {
           },
         })
       );
-      throw new Error(messages.addFail);
     }
   };
 
   const loadSelectedQueen = useCallback(
-    async (id: string | undefined): Promise<QueenStructure> => {
+    async (id: string) => {
       try {
         dispatch(showLoadingActionCreator());
         const {
@@ -140,14 +137,13 @@ const useApi = () => {
         dispatch(hideLoadingActionCreator());
 
         return queenById;
-      } catch (error: unknown) {
+      } catch (error) {
         dispatch(hideLoadingActionCreator()),
           dispatch(
             showModalActionCreator({
               modalData: { isSuccess: false, modalMessage: messages.failed },
             })
           );
-        throw new Error("bring back my queens has failed");
       }
     },
     [dispatch, token]
