@@ -5,6 +5,7 @@ import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 
 describe("Given a Pagination component", () => {
+  window.scrollTo = vi.fn().mockImplementation(() => ({}));
   describe("When it's rendered", () => {
     test("Then it should show a button with an arrow", () => {
       renderWithProviders(

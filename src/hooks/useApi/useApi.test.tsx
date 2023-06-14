@@ -14,6 +14,11 @@ import {
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
+import { vi } from "vitest";
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});
 
 describe("Given a getQueens function", () => {
   describe("When its called", () => {
@@ -140,16 +145,14 @@ describe("Given a delete queen function ", () => {
 describe("Given a loadSelectedQueen function", () => {
   describe("When its called with a queen id", () => {
     test("Then it should return a queen that match the id", async () => {
-      server.resetHandlers(...getHandlers);
-      const expectedQueen = queenMock[0];
-
       const {
         result: {
           current: { loadSelectedQueen },
         },
       } = renderHook(() => useApi(), { wrapper: wrapper });
 
-      const queen = await loadSelectedQueen(queenMock[0].id);
+      const queen = await loadSelectedQueen(queenMock[0].id as string);
+      const expectedQueen = queenMock[0];
 
       expect(queen).toStrictEqual(expectedQueen);
     });
