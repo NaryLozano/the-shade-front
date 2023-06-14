@@ -15,6 +15,7 @@ const DetailPageStyled = styled.main`
     border-radius: 0.813rem;
     padding: 1.25rem;
     box-shadow: ${(props) => props.theme.colors.shadow};
+    width: 17.5rem;
 
     &__img {
       width: 100%;

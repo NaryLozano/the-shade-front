@@ -10,6 +10,9 @@ import {
 } from "react-router-dom";
 import paths from "../../routers/paths/paths";
 import Layout from "../../components/Layout/Layout";
+import { vi } from "vitest";
+
+window.scrollTo = vi.fn().mockImplementation(() => ({}));
 
 describe("Given an AddPAge page", () => {
   describe("When its rendered", () => {
