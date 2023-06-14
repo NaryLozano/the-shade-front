@@ -24,6 +24,7 @@ const Button = ({
       className={buttonClassName}
       onClick={actionOnClick}
       disabled={isDissabled}
+      aria-label={buttonA11Y}
     >
       {buttonImage ? (
         <img

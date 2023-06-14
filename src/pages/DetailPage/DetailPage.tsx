@@ -28,8 +28,10 @@ const DetailPage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const queenById = await loadSelectedQueen(idQueen);
-      dispatch(loadSelectedQueenActionCreator(queenById));
+      const queenById = await loadSelectedQueen(idQueen as string);
+      if (queenById) {
+        dispatch(loadSelectedQueenActionCreator(queenById));
+      }
     })();
   }, [dispatch, idQueen, loadSelectedQueen]);
   const queen = useAppSelector(
