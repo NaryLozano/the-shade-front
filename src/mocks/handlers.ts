@@ -26,6 +26,10 @@ export const handlers = [
   rest.post(`${apiUrl}${paths.queens}${paths.add}`, (_req, res, ctx) => {
     return res(ctx.status(201), ctx.json({ queenMock }));
   }),
+
+  rest.get(`${apiUrl}${paths.queens}/:idQueen`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ queenById: queenMock[0] }));
+  }),
 ];
 
 export const getHandlers = [

@@ -5,6 +5,7 @@ import useApi from "../../hooks/useApi/useApi";
 import { QueenStructure } from "../../store/queens/types";
 import { useAppDispatch } from "../../store";
 import { deleteQueenActionCreator } from "../../store/queens/queensSlice";
+import { Link } from "react-router-dom";
 interface CardProps {
   queen: QueenStructure;
 }
@@ -22,7 +23,7 @@ const Card = ({
 
   return (
     <CardStyled className="card">
-      <button className="card__image-button">
+      <Link to={`/queens/${id}`} className="card__image-button">
         <img
           className="card__img"
           src={image}
@@ -30,7 +31,7 @@ const Card = ({
           width="240"
           height="209"
         />
-      </button>
+      </Link>
 
       <h2>{name}</h2>
       <span className="card__details">ranking:</span>

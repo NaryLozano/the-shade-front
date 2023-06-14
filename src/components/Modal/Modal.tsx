@@ -22,7 +22,7 @@ const Modal = (): React.ReactElement => {
         className={`modal modal${modalData?.isSuccess ? "--ok" : "--error"}`}
       >
         <h2 className="modal__title">{`${
-          modalData?.isSuccess ? modaltype.OK : modaltype.error
+          modalData?.isSuccess ? modaltype.ok : modaltype.error
         }`}</h2>
         <span className="modal__content">{modalData?.modalMessage}</span>
         <Button
