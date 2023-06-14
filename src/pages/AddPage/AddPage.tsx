@@ -21,6 +21,7 @@ const AddPage = (): React.ReactElement => {
     dispatch(addQueenActionCreator(newQueen));
 
     navigate(paths.home);
+    window.scrollTo(0, 0);
     dispatch(
       showModalActionCreator({
         modalData: {
