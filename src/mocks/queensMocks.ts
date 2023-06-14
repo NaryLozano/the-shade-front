@@ -8,3 +8,5 @@ export const queenMock4 = getQueenMockData(4);
 export const queensMock = getQueenMockData(3);
 
 export const season1QueensMock = getQueenMockData(8, { season: 1 });
+
+export const queensMock20 = getQueenMockData(8);

@@ -1,4 +1,4 @@
-import { renderHook, screen } from "@testing-library/react";
+import { act, renderHook, screen } from "@testing-library/react";
 import { queenMock, queensMock } from "../../mocks/queensMocks";
 import useApi from "./useApi";
 import { server } from "../../mocks/server";
@@ -15,6 +15,7 @@ import {
   createMemoryRouter,
 } from "react-router-dom";
 import { vi } from "vitest";
+import { store } from "../../store";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -155,6 +156,76 @@ describe("Given a loadSelectedQueen function", () => {
       const expectedQueen = queenMock[0];
 
       expect(queen).toStrictEqual(expectedQueen);
+    });
+  });
+  describe("When its called an it rejects", () => {
+    test("Then it should throw an error with the message", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const {
+        result: {
+          current: { loadSelectedQueen },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapWithProviders });
+
+      const queenSelected = queenMock[0].id;
+
+      const routes: RouteObject[] = [
+        {
+          path: "/",
+          element: <Layout />,
+        },
+      ];
+      const modalRoute = createMemoryRouter(routes);
+
+      renderWithProviders(<RouterProvider router={modalRoute} />);
+
+      await act(async () => {
+        await loadSelectedQueen(queenSelected as string);
+
+        const modalText = screen.getByRole("heading", {
+          level: 2,
+          name: "oops!",
+        });
+
+        expect(modalText).toHaveTextContent("oops!");
+      });
+    });
+  });
+
+  describe("Given a addQueen function", () => {
+    describe("When it is called with a new queen", async () => {
+      test("Then it should return the new queen'", async () => {
+        const expectedNewQueen = queenMock[0];
+        const {
+          result: {
+            current: { addQueen },
+          },
+        } = renderHook(() => useApi(), { wrapper: wrapper });
+
+        const newQueen = await addQueen(queenMock[0]);
+
+        expect(newQueen).toStrictEqual(expectedNewQueen);
+      });
+    });
+  });
+  describe("When is called and  it rejects", () => {
+    test("Then the error 'queen could't be created try again, please' should be in the store", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const expectedMessage = "queen could't be created try again, please";
+
+      const {
+        result: {
+          current: { addQueen },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapper });
+
+      await addQueen(queenMock[0]);
+
+      const message = store.getState().ui.modalData?.modalMessage;
+
+      expect(message).toBe(expectedMessage);
     });
   });
 });

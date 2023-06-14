@@ -18,8 +18,8 @@ const buttonData: buttonDataStructure = {
   buttonA11Y: {
     delete: "delete",
     modify: "modify",
-    next: "next",
-    previous: "previous",
+    next: "next-button",
+    previous: "previous-button",
     back: "back",
     add: "add",
     login: "login",

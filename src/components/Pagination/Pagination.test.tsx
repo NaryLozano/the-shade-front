@@ -19,7 +19,7 @@ describe("Given a Pagination component", () => {
         )
       );
 
-      const loadMore = screen.getByRole("button", { name: "next" });
+      const loadMore = screen.getByRole("button", { name: "next-button" });
       expect(loadMore).toBeInTheDocument();
     });
   });
@@ -36,7 +36,7 @@ describe("Given a Pagination component", () => {
           />
         )
       );
-      const nextButton = screen.getByRole("button", { name: "next" });
+      const nextButton = screen.getByRole("button", { name: "next-button" });
       await userEvent.click(nextButton);
 
       expect(nextPage).toHaveBeenCalled();
@@ -55,7 +55,9 @@ describe("Given a Pagination component", () => {
           />
         )
       );
-      const nextButton = screen.getByRole("button", { name: "previous" });
+      const nextButton = screen.getByRole("button", {
+        name: "previous-button",
+      });
       await userEvent.click(nextButton);
 
       expect(previousPage).toHaveBeenCalled();

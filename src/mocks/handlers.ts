@@ -1,7 +1,12 @@
 import { rest } from "msw";
 import { tokenMock } from "./mocks";
 import { apiUrl } from "../hooks/useUser/useUser";
-import { queenMock, queensMock, season1QueensMock } from "./queensMocks";
+import {
+  queenMock,
+  queensMock,
+  queensMock20,
+  season1QueensMock,
+} from "./queensMocks";
 import paths from "../routers/paths/paths";
 
 export const handlers = [
@@ -16,15 +21,12 @@ export const handlers = [
     );
   }),
 
-  rest.delete(
-    `${apiUrl}${paths.queens}/${queenMock[0].id}`,
-    (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json("Queen deleted!"));
-    }
-  ),
+  rest.delete(`${apiUrl}${paths.queens}/:idQueen`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json("Queen deleted!"));
+  }),
 
   rest.post(`${apiUrl}${paths.queens}${paths.add}`, (_req, res, ctx) => {
-    return res(ctx.status(201), ctx.json({ queenMock }));
+    return res(ctx.status(201), ctx.json(queenMock[0]));
   }),
 
   rest.get(`${apiUrl}${paths.queens}/:idQueen`, (_req, res, ctx) => {
@@ -45,11 +47,35 @@ export const errorHandlers = [
   rest.post(`${apiUrl}${paths.user}${paths.login}`, (_req, res, ctx) => {
     return res(ctx.status(401));
   }),
+
+  rest.get(`${apiUrl}${paths.queens}/:idQueen`, (_req, res, ctx) => {
+    return res(ctx.status(401));
+  }),
+
   rest.get(`${apiUrl}${paths.queens}`, (_req, res, ctx) => {
     return res(ctx.status(401));
+  }),
+  rest.post(`${apiUrl}${paths.queens}/add`, (_req, res, ctx) => {
+    return res(ctx.status(400));
   }),
 
   rest.delete(`${apiUrl}${paths.queens}/:idQueen`, (_req, res, ctx) => {
     return res(ctx.status(404));
+  }),
+];
+
+export const paginationHandlers = [
+  rest.get(`${apiUrl}${paths.queens}`, (req, res, ctx) => {
+    const params = req.url.searchParams;
+    params.set("skip", "0");
+    params.set("limit", "5");
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        routes: queensMock20,
+        totalRoutes: queensMock20.length,
+      })
+    );
   }),
 ];

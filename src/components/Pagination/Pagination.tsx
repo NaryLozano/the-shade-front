@@ -34,7 +34,7 @@ const Pagination = ({
         buttonA11Y={buttonA11Y.previous}
         buttonClassName={buttonClassName.pagination}
         actionOnClick={previousButton}
-        isDissabled={hidePrevious}
+        isDissabled={hidePrevious && true}
       />
 
       <Button
@@ -42,7 +42,7 @@ const Pagination = ({
         buttonA11Y={buttonA11Y.next}
         buttonClassName={buttonClassName.pagination}
         actionOnClick={nextButton}
-        isDissabled={hideNext}
+        isDissabled={hideNext && true}
       />
     </PaginationStyled>
   );

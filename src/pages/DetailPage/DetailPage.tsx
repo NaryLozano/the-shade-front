@@ -5,12 +5,13 @@ import {
   loadSelectedQueenActionCreator,
   deleteQueenActionCreator,
 } from "../../store/queens/queensSlice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../store";
 import useApi from "../../hooks/useApi/useApi";
 import buttonData from "../../data/button/buttonData";
 import { QueenStructure } from "../../store/queens/types";
 import { useEffect } from "react";
+import paths from "../../routers/paths/paths";
 
 const DetailPage = (): React.ReactElement => {
   const dispatch = useDispatch();
@@ -21,12 +22,16 @@ const DetailPage = (): React.ReactElement => {
 
   const { loadSelectedQueen, deleteQueen } = useApi();
 
+  const navigate = useNavigate();
+
   const { buttonA11Y, buttonClassName, buttonPicture } = buttonData;
 
   useEffect(() => {
     (async () => {
-      const queenById = await loadSelectedQueen(idQueen);
-      dispatch(loadSelectedQueenActionCreator(queenById));
+      const queenById = await loadSelectedQueen(idQueen as string);
+      if (queenById) {
+        dispatch(loadSelectedQueenActionCreator(queenById));
+      }
     })();
   }, [dispatch, idQueen, loadSelectedQueen]);
   const queen = useAppSelector(
@@ -36,6 +41,7 @@ const DetailPage = (): React.ReactElement => {
   const handleDelete = async () => {
     await deleteQueen(idQueen);
     dispatch(deleteQueenActionCreator(idQueen));
+    navigate(paths.home);
   };
   const { name, hometown, image, rank, age, season } = queen;
   return (

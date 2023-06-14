@@ -10,6 +10,9 @@ import {
 } from "react-router-dom";
 import paths from "../../routers/paths/paths";
 import Layout from "../../components/Layout/Layout";
+import { vi } from "vitest";
+
+window.scrollTo = vi.fn().mockImplementation(() => ({}));
 
 describe("Given an AddPAge page", () => {
   describe("When its rendered", () => {
@@ -40,7 +43,7 @@ describe("Given an AddPAge page", () => {
       const hometown = screen.getByRole("textbox", { name: "hometown" });
       const quote = screen.getByRole("textbox", { name: "memorable quote" });
       const image = screen.getByRole("textbox", { name: "picture url" });
-      const button = screen.getByRole("button", { name: "add queen" });
+      const button = screen.getByRole("button", { name: "add" });
 
       await userEvent.type(name, queenMock[0].name);
       await userEvent.type(age, queenMock[0].age.toString());
