@@ -10,34 +10,23 @@ import {
 } from "./lazyComponents/lazyComponents";
 import paths from "./paths/paths";
 
-const { login, home, root, add, notFound } = paths;
-export const routes: RouteObject[] = [
+const { login, home, add, notFound } = paths;
+
+const routes: RouteObject[] = [
   {
-    path: root,
+    path: "/",
     element: <App />,
     children: [
       { index: true, element: <Navigate to={login} replace /> },
       {
         path: login,
-        element: (
-          <Suspense>
-            <LazyLogin />
-          </Suspense>
-        ),
+        element: <LazyLogin />,
       },
       {
         path: home,
         element: (
           <Suspense>
             <LazyList />
-          </Suspense>
-        ),
-      },
-      {
-        path: notFound,
-        element: (
-          <Suspense>
-            <LazyNotFound />
           </Suspense>
         ),
       },
@@ -54,6 +43,14 @@ export const routes: RouteObject[] = [
         element: (
           <Suspense>
             <LazyDetail />
+          </Suspense>
+        ),
+      },
+      {
+        path: notFound,
+        element: (
+          <Suspense>
+            <LazyNotFound />
           </Suspense>
         ),
       },
