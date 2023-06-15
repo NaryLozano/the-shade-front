@@ -43,7 +43,7 @@ const DetailPage = (): React.ReactElement => {
     dispatch(deleteQueenActionCreator(idQueen));
     navigate(paths.home);
   };
-  const { name, hometown, image, rank, age, season } = queen;
+  const { name, hometown, image, rank, age, season, quote } = queen;
   return (
     <DetailPageStyled>
       <article className="details">
@@ -65,7 +65,7 @@ const DetailPage = (): React.ReactElement => {
           <li className="details__content--name">hometown</li>
           <li className="details__content">{hometown}</li>
           <li className="details__content--name">memorable quote</li>
-          <li className="details__content">Quote here Please</li>
+          <li className="details__content">{quote}</li>
         </ul>
         <div className="details__buttons">
           <Button
